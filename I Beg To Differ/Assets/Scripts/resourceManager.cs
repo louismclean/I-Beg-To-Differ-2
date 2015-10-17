@@ -30,6 +30,16 @@ public class resourceManager : MonoBehaviour {
 	public void getBlanket(int amnt){
 		blankets.add (amnt);
 	}
+
+	public bool spend(int coinamt, int woodamt, int blanketamt){
+		if (coins.canSpend (coinamt) && wood.canSpend (woodamt) && blankets.canSpend (blanketamt)) {
+			coins.spend(coinamt);
+			wood.spend(woodamt);
+			blankets.spend(blanketamt);
+			return true;
+		}
+		return false;
+	}
 }
 
 
