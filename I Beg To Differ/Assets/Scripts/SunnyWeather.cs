@@ -21,7 +21,6 @@ public class SunnyWeather : MonoBehaviour {
 
     float sunHeight(float worldTime)
     {
-        Debug.Log(worldTime);
         if(worldTime < 0.5f)
         {
             return worldTime * 2f;

@@ -70,7 +70,7 @@ public class House : MonoBehaviour {
         {
             other.SendMessage("SetIsInHouse", true);
             m_isInHouse = true;
-            m_alphaTarget = 0.1f;
+            m_alphaTarget = 0.0f;
         }
     }
 
@@ -89,12 +89,18 @@ public class House : MonoBehaviour {
         frameLevel++;
         materialLevel = 1;
 
-        houseBack.sprite = houseBackSprite[frameLevel];
-        houseFront.sprite = houseFrontSprite[(frameLevel * 3) - 2];
+        houseBack.sprite = houseBackSprite[frameLevel-1];
+        Debug.Log("array length: " + houseFrontSprite.Length);
+        Debug.Log("frame level:" + frameLevel);
+        Debug.Log("material level:" + materialLevel);
+        Debug.Log("getting element: " + (((frameLevel - 1) * 3) + materialLevel-1));
+
+        houseFront.sprite = houseFrontSprite[((frameLevel - 1) * 3) + materialLevel-1];
     }
 
     void UpgradeHouseMaterials()
     {
         materialLevel++;
+        houseFront.sprite = houseFrontSprite[((frameLevel - 1) * 3)+materialLevel-1];
     }
 }
