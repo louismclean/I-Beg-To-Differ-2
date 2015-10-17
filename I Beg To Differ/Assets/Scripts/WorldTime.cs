@@ -6,6 +6,7 @@ public class WorldTime : MonoBehaviour {
     public float time = 0.5f;
     public static float dayDuration = 30f;
     private WeatherManager weatherManager;
+    public static int day = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,7 @@ public class WorldTime : MonoBehaviour {
         {
             time = 0f;
             weatherManager.ChangeWeather();
+            day++;
         }
 	}
 

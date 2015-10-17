@@ -6,6 +6,7 @@ public class WeatherManager : MonoBehaviour {
 
     public enum WeatherType {Sun, Rain, Snow, Volcano};
     public WeatherType currentWeather;
+    public int weatherIntensity;
     public Queue<WeatherType> WeatherForecast;
     public Sprite SunnySprite;
     public Sprite RainySprite;
@@ -171,6 +172,9 @@ public class WeatherManager : MonoBehaviour {
                     targetCol = doomCol_night;
                 break;
         }
+
+        weatherIntensity = 1;
+
     }
 
     WeatherType GetNextWeather()
