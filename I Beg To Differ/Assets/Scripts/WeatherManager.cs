@@ -13,6 +13,17 @@ public class WeatherManager : MonoBehaviour {
     public Sprite VolcanoSprite;
     public WeatherForecastIcon WeatherForecastIconPrefab;
 
+	public Color sunnyCol_day = new Color(30,117,255);
+	public Color rainCol_day = new Color(154,176,210);
+	public Color snowCol_day = new Color(202,236,232);
+	public Color doomCol_day = new Color(203,63,12);	
+	public Color sunnyCol_night = new Color(58,69,86);
+	public Color rainCol_night = new Color(84,96,114);
+	public Color snowCol_night = new Color(173,148,208);
+	public Color doomCol_night = new Color(109,57,38);
+	bool isNight;
+
+
     public static int ForecastDays = 4;
 
     public List<WeatherForecastIcon> weatherForecastIcons;
@@ -46,6 +57,7 @@ public class WeatherManager : MonoBehaviour {
 	
 	void Update () 
     {
+
         //currentWeatherTimeRemaining -= Time.deltaTime;
        // if(currentWeatherTimeRemaining < 0f)
        // {
