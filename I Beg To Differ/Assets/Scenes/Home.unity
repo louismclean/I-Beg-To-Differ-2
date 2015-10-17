@@ -297,6 +297,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11481348, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
+      propertyPath: weatherForecastIcons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 495622, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -345,6 +349,50 @@ Prefab:
       propertyPath: threedays
       value: 
       objectReference: {fileID: 376787449}
+    - target: {fileID: 11481348, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
+      propertyPath: SunnySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e64922dd380c54b2bb5ff9f051dc9302,
+        type: 3}
+    - target: {fileID: 11481348, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
+      propertyPath: RainySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b8b3501956ec45a1b25bc2eeda1489d,
+        type: 3}
+    - target: {fileID: 11481348, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
+      propertyPath: SnowySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9d04eb172110a4eb2ba0ef45950357ed,
+        type: 3}
+    - target: {fileID: 11481348, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
+      propertyPath: VolcanoSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e64922dd380c54b2bb5ff9f051dc9302,
+        type: 3}
+    - target: {fileID: 11481348, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
+      propertyPath: currentWeatherTimeRemaining
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11481348, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
+      propertyPath: weatherForecastIcons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1942833132}
+    - target: {fileID: 11481348, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
+      propertyPath: weatherForecastIcons.Array.data[1]
+      value: 
+      objectReference: {fileID: 126686620}
+    - target: {fileID: 11481348, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
+      propertyPath: weatherForecastIcons.Array.data[2]
+      value: 
+      objectReference: {fileID: 265492661}
+    - target: {fileID: 11481348, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
+      propertyPath: weatherForecastIcons.Array.data[3]
+      value: 
+      objectReference: {fileID: 376787449}
+    - target: {fileID: 11481348, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
+      propertyPath: WeatherDuration
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a22c8d2eab1c8c44f9b6c9fa1be22c5c, type: 2}
   m_IsPrefabParent: 0

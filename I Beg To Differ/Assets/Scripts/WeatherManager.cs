@@ -6,7 +6,7 @@ public class WeatherManager : MonoBehaviour {
 
     public enum WeatherType {Sun, Rain, Snow, Volcano};
     public WeatherType currentWeather;
-    public float WeatherDuration = 90f;
+    public float WeatherDuration = 5f;
     public float currentWeatherTimeRemaining;
     public Queue<WeatherType> WeatherForecast;
     public Sprite SunnySprite;
@@ -14,16 +14,13 @@ public class WeatherManager : MonoBehaviour {
     public Sprite SnowySprite;
     public Sprite VolcanoSprite;
 
-    public WeatherForecastIcon today;
-    public WeatherForecastIcon tomorrow;
-    public WeatherForecastIcon twodays;
-    public WeatherForecastIcon threedays;
+    public WeatherForecastIcon[] weatherForecastIcons;
 
     void Awake()
     {
         currentWeather = WeatherType.Sun;
         WeatherForecast = new Queue<WeatherType>();
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             WeatherForecast.Enqueue(GetNextWeather());
         }
@@ -39,7 +36,8 @@ public class WeatherManager : MonoBehaviour {
         currentWeatherTimeRemaining -= Time.deltaTime;
         if(currentWeatherTimeRemaining < 0f)
         {
-            ChangeWeather();    
+            ChangeWeather();
+            currentWeatherTimeRemaining = WeatherDuration;
         }
 	}
 
@@ -47,6 +45,29 @@ public class WeatherManager : MonoBehaviour {
     {
         currentWeather = WeatherForecast.Dequeue();
         WeatherForecast.Enqueue(GetNextWeather());
+        
+        Sprite newSprite = SunnySprite;
+        WeatherType[] weatherArray = WeatherForecast.ToArray();
+
+        for (int i = 0; i<4; i++)
+        {
+            switch (weatherArray[i])
+            {
+                case WeatherType.Sun:
+                    newSprite = SunnySprite;
+                    break;
+                case WeatherType.Rain:
+                    newSprite = RainySprite;
+                    break;
+                case WeatherType.Snow:
+                    newSprite = SnowySprite;
+                    break;
+                case WeatherType.Volcano:
+                    newSprite = VolcanoSprite;
+                    break;
+            }
+            weatherForecastIcons[i].SetSprite(newSprite);
+        }
     }
 
     WeatherType GetNextWeather()
