@@ -17,6 +17,9 @@ public class HoboController : MonoBehaviour {
 
     private bool m_Jump;
 
+	private float xLimitLeft = -106f;
+	private float xLimightRight = 105f;
+
     private bool m_isInHouse;
 
     void Awake()
@@ -32,6 +35,19 @@ public class HoboController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (this.m_Rigidbody2D.velocity.y > 0) {
+			this.GetComponent<BoxCollider2D> ().enabled = false;
+		} else {
+			this.GetComponent<BoxCollider2D> ().enabled = true;
+		}
+
+		
+		if(this.transform.position.x > xLimightRight)
+			this.transform.position = new Vector3(xLimightRight,this.transform.position.y,this.transform.position.z);
+		
+		if(this.transform.position.x < xLimitLeft)
+			this.transform.position = new Vector3(xLimitLeft,this.transform.position.y,this.transform.position.z);
+
         if (!m_Jump)
         {
             // Read the jump input in Update so button presses aren't missed.
@@ -52,7 +68,6 @@ public class HoboController : MonoBehaviour {
             movement = 1;
         }
 
-      
 
         m_Grounded = false;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
@@ -100,10 +115,15 @@ public class HoboController : MonoBehaviour {
 
 
         //only control the player if grounded or airControl is turned on
-        if (m_Grounded || m_AirControl)
+		if (m_Grounded || m_AirControl) 
         {
+			if(move>0 &&this.transform.position.x < xLimightRight)
+
             // Move the character
             m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
+
+			if(move<0&&this.transform.position.x > xLimitLeft)
+				m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
 
             // If the input is moving the player right and the player is facing left...
             if (move > 0 && !m_FacingRight)
@@ -120,7 +140,7 @@ public class HoboController : MonoBehaviour {
         }
         // If the player should jump...
         if (m_Grounded && jump)
-        {
+		{
             // Add a vertical force to the player.
             m_Grounded = false;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
@@ -143,4 +163,21 @@ public class HoboController : MonoBehaviour {
     {
         m_isInHouse = b;
     }
+	/*
+	void OnCollisionEnter2D(Collision2D col){
+		if (col.gameObject.tag == "UpwardJump") {
+			if(this.m_Rigidbody2D.velocity.y>=0.0f){
+				Physics2D.IgnoreCollision(col.collider,this.GetComponent<BoxCollider2D>());
+			}
+		
+		}
+	}
+
+	void OnCollisionExit2D(Collision2D col){
+		if (col.gameObject.tag == "UpwardJump") {
+				Physics2D.IgnoreCollision(col.collider,this.GetComponent<BoxCollider2D>(),false);
+
+			
+		}
+	}*/
 }
