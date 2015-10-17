@@ -64,11 +64,42 @@ public class WeatherManager : MonoBehaviour {
 	void Update () 
     {
 		mainCam.backgroundColor = Color.Lerp (mainCam.backgroundColor, targetCol, Time.deltaTime*colorRate);
+
+		switch (currentWeather)
+		{
+		case WeatherType.Sun:
+			sunnySystem.SetActive(true);
+			if(timer.isDay())
+				targetCol = sunnyCol_day;
+			else
+				targetCol = sunnyCol_night;
+			break;
+		case WeatherType.Rain:
+			rainParticleSystem.SetActive(true);
+			if(timer.isDay())
+				targetCol = rainCol_day;
+			else
+				targetCol = rainCol_night;
+			break;
+		case WeatherType.Snow:
+			snowParticleSystem.SetActive(true);
+			if(timer.isDay())
+				targetCol = snowCol_day;
+			else
+				targetCol = snowCol_night;
+			break;
+            case WeatherType.Volcano:
+                if(timer.isDay())
+                    targetCol = doomCol_day;
+                else
+                    targetCol = doomCol_night;
+                break;
+        }
         //currentWeatherTimeRemaining -= Time.deltaTime;
-       // if(currentWeatherTimeRemaining < 0f)
-       // {
-       //     ChangeWeather();
-       //     currentWeatherTimeRemaining = WeatherDuration;
+        // if(currentWeatherTimeRemaining < 0f)
+        // {
+        //     ChangeWeather();
+        //     currentWeatherTimeRemaining = WeatherDuration;
        // }
 
         //foreach (WeatherForecastIcon icon in weatherForecastIcons)
