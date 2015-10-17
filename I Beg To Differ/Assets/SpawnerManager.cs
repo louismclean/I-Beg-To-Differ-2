@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public class SpawnerManager : MonoBehaviour {
 
-    public int maxLooseChange = 3;
+    public enum ResourceType {Wood, Blanket, Coin};
+
+    public int maxLooseCoins = 3;
     public int maxLooseBlankets = 7;
     public int maxLooseWoods = 10;
     List<ItemSpawner> ChangeSpawners;
@@ -21,4 +23,10 @@ public class SpawnerManager : MonoBehaviour {
 	void Update () {
          
 	}
+
+    public bool CanSpawn(ResourceType a_resourcetype)
+    {
+        //put logic here
+        return true;
+    }
 }

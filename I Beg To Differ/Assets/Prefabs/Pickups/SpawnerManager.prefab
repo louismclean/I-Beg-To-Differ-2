@@ -1,54 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &137004
+--- !u!1 &119076
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 415952}
-  - 114: {fileID: 11433692}
+  - 4: {fileID: 401400}
+  - 114: {fileID: 11481758}
   m_Layer: 0
-  m_Name: ItemSpawner
-  m_TagString: Untagged
+  m_Name: SpawnerManager
+  m_TagString: SpawnerManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &415952
+--- !u!4 &401400
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137004}
+  m_GameObject: {fileID: 119076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.05252981, y: 5.36839104, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11433692
+--- !u!114 &11481758
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137004}
+  m_GameObject: {fileID: 119076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f6916a408f319a4fb350b8b9845a774, type: 3}
+  m_Script: {fileID: 11500000, guid: 56b104cf996d0f04481a9701e67f5b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourcetype: 1
-  resourcePrefab: {fileID: 11487404, guid: 976598aeebd684d8cbbfae1a3020835b, type: 2}
+  maxLooseChange: 3
+  maxLooseBlankets: 7
+  maxLooseWoods: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: SpawnerManager
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 137004}
+  m_RootGameObject: {fileID: 119076}
   m_IsPrefabParent: 1
