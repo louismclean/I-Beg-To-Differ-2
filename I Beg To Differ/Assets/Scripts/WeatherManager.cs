@@ -12,6 +12,21 @@ public class WeatherManager : MonoBehaviour {
     public Sprite SnowySprite;
     public Sprite VolcanoSprite;
     public WeatherForecastIcon WeatherForecastIconPrefab;
+	public Camera mainCam;
+
+	public Color sunnyCol_day = new Color(30,117,255);
+	public Color rainCol_day = new Color(154,176,210);
+	public Color snowCol_day = new Color(202,236,232);
+	public Color doomCol_day = new Color(203,63,12);	
+	public Color sunnyCol_night = new Color(58,69,86);
+	public Color rainCol_night = new Color(84,96,114);
+	public Color snowCol_night = new Color(173,148,208);
+	public Color doomCol_night = new Color(109,57,38);
+	public Color targetCol;
+	bool isNight;
+	WorldTime timer;
+	public float colorRate = 2f;
+
 
     public static int ForecastDays = 4;
 
@@ -40,12 +55,15 @@ public class WeatherManager : MonoBehaviour {
 
 	void Start () 
     {
+		timer = GameObject.FindGameObjectWithTag ("WorldTime").GetComponent<WorldTime>();
+		targetCol = sunnyCol_day;
         rainParticleSystem.SetActive(false);
         snowParticleSystem.SetActive(false);
 	}
 	
 	void Update () 
     {
+		mainCam.backgroundColor = Color.Lerp (mainCam.backgroundColor, targetCol, Time.deltaTime*colorRate);
         //currentWeatherTimeRemaining -= Time.deltaTime;
        // if(currentWeatherTimeRemaining < 0f)
        // {
@@ -96,14 +114,30 @@ public class WeatherManager : MonoBehaviour {
         {
             case WeatherType.Sun:
                 sunnySystem.SetActive(true);
+				if(timer.isDay())
+					targetCol = sunnyCol_day;
+				else
+					targetCol = sunnyCol_night;
                 break;
             case WeatherType.Rain:
-                rainParticleSystem.SetActive(true);
+				rainParticleSystem.SetActive(true);
+				if(timer.isDay())
+					targetCol = rainCol_day;
+				else
+					targetCol = rainCol_night;
                 break;
             case WeatherType.Snow:
-                snowParticleSystem.SetActive(true);
+				snowParticleSystem.SetActive(true);
+				if(timer.isDay())
+					targetCol = snowCol_day;
+				else
+					targetCol = snowCol_night;
                 break;
-            case WeatherType.Volcano:
+			case WeatherType.Volcano:
+				if(timer.isDay())
+					targetCol = doomCol_day;
+				else
+                    targetCol = doomCol_night;
                 break;
         }
     }
