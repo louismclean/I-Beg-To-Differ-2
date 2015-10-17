@@ -16,8 +16,8 @@ public class House : MonoBehaviour {
     public Sprite[] houseFrontSprite;
     public Sprite[] houseBackSprite;
 
-    public int frameLevel;
-    public int materialLevel;
+    public int frameLevel = 0;
+    public int materialLevel = 0;
 
     public static int MAXFRAMELEVEL = 4;
     public static int MAXMATERIALLEVEL = 3;
@@ -90,6 +90,8 @@ public class House : MonoBehaviour {
         materialLevel = 1;
 
         houseBack.sprite = houseBackSprite[frameLevel];
+        houseFront.sprite = houseFrontSprite[(frameLevel * 3) - 2];
+    }
 
     void UpgradeHouseMaterials()
     {
