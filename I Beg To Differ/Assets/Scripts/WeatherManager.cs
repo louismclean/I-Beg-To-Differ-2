@@ -6,15 +6,20 @@ public class WeatherManager : MonoBehaviour {
 
     public enum WeatherType {Sun, Rain, Snow, Volcano};
     public WeatherType currentWeather;
-    public float WeatherDuration = 5f;
+    public float WeatherDuration = 15f;
     public float currentWeatherTimeRemaining;
     public Queue<WeatherType> WeatherForecast;
     public Sprite SunnySprite;
     public Sprite RainySprite;
     public Sprite SnowySprite;
     public Sprite VolcanoSprite;
+    public WeatherForecastIcon WeatherForecastIconPrefab;
 
-    public WeatherForecastIcon[] weatherForecastIcons;
+    public List<WeatherForecastIcon> weatherForecastIcons;
+
+    public GameObject rainParticleSystem;
+    public GameObject snowParticleSystem;
+    public GameObject sunnySystem;
 
     void Awake()
     {
@@ -28,7 +33,8 @@ public class WeatherManager : MonoBehaviour {
 
 	void Start () 
     {
-
+        rainParticleSystem.SetActive(false);
+        snowParticleSystem.SetActive(false);
 	}
 	
 	void Update () 
@@ -39,34 +45,59 @@ public class WeatherManager : MonoBehaviour {
             ChangeWeather();
             currentWeatherTimeRemaining = WeatherDuration;
         }
+
+        //foreach (WeatherForecastIcon icon in weatherForecastIcons)
+        //{
+       //     icon.transform.position = (icon.transform.position - new Vector3(Time.deltaTime * forecastIconScrollRate, 0f, 0f));
+       // }
 	}
 
     void ChangeWeather()
     {
         currentWeather = WeatherForecast.Dequeue();
-        WeatherForecast.Enqueue(GetNextWeather());
+        WeatherType nextWeather = GetNextWeather();
+        WeatherForecast.Enqueue(nextWeather);
+
+        WeatherForecastIcon newIcon = Instantiate(WeatherForecastIconPrefab, transform.position, transform.rotation) as WeatherForecastIcon;
+        newIcon.transform.parent = transform.parent;
+        weatherForecastIcons.Add(newIcon);
+        weatherForecastIcons.RemoveAt(0);
         
         Sprite newSprite = SunnySprite;
-        WeatherType[] weatherArray = WeatherForecast.ToArray();
-
-        for (int i = 0; i<4; i++)
+       
+        switch (nextWeather)
         {
-            switch (weatherArray[i])
-            {
-                case WeatherType.Sun:
-                    newSprite = SunnySprite;
-                    break;
-                case WeatherType.Rain:
-                    newSprite = RainySprite;
-                    break;
-                case WeatherType.Snow:
-                    newSprite = SnowySprite;
-                    break;
-                case WeatherType.Volcano:
-                    newSprite = VolcanoSprite;
-                    break;
-            }
-            weatherForecastIcons[i].SetSprite(newSprite);
+            case WeatherType.Sun:
+                newSprite = SunnySprite;
+                break;
+            case WeatherType.Rain:
+                newSprite = RainySprite;
+                break;
+            case WeatherType.Snow:
+                newSprite = SnowySprite;
+                break;
+            case WeatherType.Volcano:
+                newSprite = VolcanoSprite;
+                break;
+        }
+        newIcon.SetSprite(newSprite);
+
+        rainParticleSystem.SetActive(false);
+        snowParticleSystem.SetActive(false);
+
+        switch (currentWeather)
+        {
+            case WeatherType.Sun:
+                sunnySystem.SetActive(true);
+                break;
+            case WeatherType.Rain:
+                rainParticleSystem.SetActive(true);
+                break;
+            case WeatherType.Snow:
+                snowParticleSystem.SetActive(true);
+                break;
+            case WeatherType.Volcano:
+                break;
         }
     }
 

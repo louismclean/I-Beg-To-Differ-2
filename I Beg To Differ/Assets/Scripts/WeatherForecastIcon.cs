@@ -3,14 +3,17 @@ using System.Collections;
 
 public class WeatherForecastIcon : MonoBehaviour {
 
-    public SpriteRenderer spriteRenderer;
+    SpriteRenderer spriteRenderer;
+    public float scrollRate = 0.5f;
 
     void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
 	// Use this for initialization
 	void Start () {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(-scrollRate, 0f);
 	}
 	
 	// Update is called once per frame
