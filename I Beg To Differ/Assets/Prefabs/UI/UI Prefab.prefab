@@ -220,6 +220,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &174592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 442634}
+  - 23: {fileID: 2390968}
+  - 102: {fileID: 10290270}
+  m_Layer: 0
+  m_Name: DayDivider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &175604
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +248,7 @@ GameObject:
   - 114: {fileID: 11477532}
   m_Layer: 0
   m_Name: ResourceManager
-  m_TagString: Untagged
+  m_TagString: ResourceManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,6 +354,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &198196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 422150}
+  - 23: {fileID: 2335010}
+  - 102: {fileID: 10242568}
+  m_Layer: 0
+  m_Name: DayDivider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &404438
 Transform:
   m_ObjectHideFlags: 1
@@ -360,8 +394,22 @@ Transform:
   - {fileID: 423462}
   - {fileID: 453744}
   - {fileID: 476760}
+  - {fileID: 422150}
+  - {fileID: 442634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &422150
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.94999981, y: 5.80000019, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 404438}
+  m_RootOrder: 13
 --- !u!4 &423462
 Transform:
   m_ObjectHideFlags: 1
@@ -414,6 +462,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 404438}
   m_RootOrder: 8
+--- !u!4 &442634
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.94999981, y: 5.80000019, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 404438}
+  m_RootOrder: 14
 --- !u!4 &443078
 Transform:
   m_ObjectHideFlags: 1
@@ -458,7 +518,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.06360531, y: 5.59157705, z: 0}
+  m_LocalPosition: {x: -5.53000021, y: 5.59157705, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 404438}
@@ -531,7 +591,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.8636055, y: 5.59157705, z: 0}
+  m_LocalPosition: {x: -11.54, y: 5.59157705, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 404438}
@@ -668,6 +728,30 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!23 &2335010
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198196}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c851d4fdc97db47b694368a11defd4be, type: 3}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &2346060
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -698,6 +782,30 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114082}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c851d4fdc97db47b694368a11defd4be, type: 3}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!23 &2390968
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174592}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -822,6 +930,27 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!102 &10242568
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198196}
+  m_Text: '|'
+  m_OffsetZ: 0
+  m_CharacterSize: .200000003
+  m_LineSpacing: 1
+  m_Anchor: 0
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 22
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: c851d4fdc97db47b694368a11defd4be, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!102 &10245636
 TextMesh:
   serializedVersion: 3
@@ -885,6 +1014,27 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!102 &10290270
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174592}
+  m_Text: '|'
+  m_OffsetZ: 0
+  m_CharacterSize: .200000003
+  m_LineSpacing: 1
+  m_Anchor: 0
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 22
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: c851d4fdc97db47b694368a11defd4be, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!114 &11415154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -897,15 +1047,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeather: 0
-  WeatherDuration: 90
-  currentWeatherTimeRemaining: 5
   SunnySprite: {fileID: 21300000, guid: e64922dd380c54b2bb5ff9f051dc9302, type: 3}
   RainySprite: {fileID: 21300000, guid: 1b8b3501956ec45a1b25bc2eeda1489d, type: 3}
   SnowySprite: {fileID: 21300000, guid: 9d04eb172110a4eb2ba0ef45950357ed, type: 3}
   VolcanoSprite: {fileID: 21300000, guid: b3de82705be434b34ac67a9d2f131286, type: 3}
   WeatherForecastIconPrefab: {fileID: 11471400, guid: 83793ba5b813a2e4b84d74f06eede77e,
     type: 2}
-  ForecastDays: 4
+  mainCam: {fileID: 0}
+  sunnyCol_day: {r: .117647059, g: .458823532, b: 1, a: 1}
+  rainCol_day: {r: .603921592, g: .690196097, b: .823529422, a: 1}
+  snowCol_day: {r: .792156875, g: .925490201, b: .909803927, a: 1}
+  doomCol_day: {r: .796078444, g: .247058824, b: .0470588244, a: 1}
+  sunnyCol_night: {r: .227450982, g: .270588249, b: .337254912, a: 1}
+  rainCol_night: {r: .329411775, g: .376470596, b: .447058827, a: 1}
+  snowCol_night: {r: .678431392, g: .580392182, b: .815686285, a: 1}
+  doomCol_night: {r: .427450985, g: .223529413, b: .149019614, a: 1}
+  targetCol: {r: 0, g: 0, b: 0, a: 0}
+  colorRate: 1.75999999
   weatherForecastIcons:
   - {fileID: 11446432}
   - {fileID: 11469938}
@@ -967,7 +1125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca5f32c37383d842b544ca6c93dc8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollRate: .0500000007
   lifeTime: 270
   leftAnchor: {fileID: 0}
   rightAnchor: {fileID: 0}
@@ -1006,7 +1163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca5f32c37383d842b544ca6c93dc8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollRate: .0500000007
   lifeTime: 0
   leftAnchor: {fileID: 0}
   rightAnchor: {fileID: 0}
@@ -1033,7 +1189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca5f32c37383d842b544ca6c93dc8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollRate: .0500000007
   lifeTime: 180
   leftAnchor: {fileID: 0}
   rightAnchor: {fileID: 0}
@@ -1062,7 +1217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca5f32c37383d842b544ca6c93dc8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollRate: .0500000007
   lifeTime: 90
   leftAnchor: {fileID: 0}
   rightAnchor: {fileID: 0}

@@ -22,7 +22,7 @@ public class WorldTime : MonoBehaviour {
         }
 	}
 
-    bool isDay()
+    public bool isDay()
     {
         return (time > 0.25f && time < 0.75f);
     }
