@@ -18,6 +18,8 @@ public class HoboController : MonoBehaviour {
 
     private bool m_Jump;
 
+    private bool m_isInHouse;
+
     void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -136,5 +138,10 @@ public class HoboController : MonoBehaviour {
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    public void SetIsInHouse(bool b)
+    {
+        m_isInHouse = b;
     }
 }
