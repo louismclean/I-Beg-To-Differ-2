@@ -21,4 +21,9 @@ public class WorldTime : MonoBehaviour {
             weatherManager.ChangeWeather();
         }
 	}
+
+    bool isDay()
+    {
+        return (time > 0.25f && time < 0.75f);
+    }
 }

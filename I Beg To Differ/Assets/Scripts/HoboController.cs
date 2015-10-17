@@ -5,7 +5,6 @@ public class HoboController : MonoBehaviour {
 
     [SerializeField]    private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
     [SerializeField]    private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
-    [SerializeField]    private float m_MoveSpeed = 10f;
     [SerializeField]    private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
     [SerializeField]    private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
 
@@ -46,11 +45,11 @@ public class HoboController : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.A))
         {
-            movement = -m_MoveSpeed;
+            movement = -1;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            movement = m_MoveSpeed;
+            movement = 1;
         }
 
       
