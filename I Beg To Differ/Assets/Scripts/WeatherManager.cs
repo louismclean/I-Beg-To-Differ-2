@@ -6,14 +6,14 @@ public class WeatherManager : MonoBehaviour {
 
     public enum WeatherType {Sun, Rain, Snow, Volcano};
     public WeatherType currentWeather;
-    public float WeatherDuration = 15f;
-    public float currentWeatherTimeRemaining;
     public Queue<WeatherType> WeatherForecast;
     public Sprite SunnySprite;
     public Sprite RainySprite;
     public Sprite SnowySprite;
     public Sprite VolcanoSprite;
     public WeatherForecastIcon WeatherForecastIconPrefab;
+
+    public static int ForecastDays = 4;
 
     public List<WeatherForecastIcon> weatherForecastIcons;
 
