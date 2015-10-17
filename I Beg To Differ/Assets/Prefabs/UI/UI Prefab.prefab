@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca5f32c37383d842b544ca6c93dc8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 270
+  lifeTime: 60
   leftAnchor: {fileID: 0}
   rightAnchor: {fileID: 0}
 --- !u!114 &11453758
@@ -1189,7 +1189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca5f32c37383d842b544ca6c93dc8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 180
+  lifeTime: 40
   leftAnchor: {fileID: 0}
   rightAnchor: {fileID: 0}
 --- !u!114 &11477532
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca5f32c37383d842b544ca6c93dc8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 90
+  lifeTime: 20
   leftAnchor: {fileID: 0}
   rightAnchor: {fileID: 0}
 --- !u!114 &11484984
