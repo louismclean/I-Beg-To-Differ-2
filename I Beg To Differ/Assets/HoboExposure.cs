@@ -15,24 +15,29 @@ public class HoboExposure : MonoBehaviour {
     public float RainyExposureRate = 0.02f;
     public float SnowyExposureRate = 0.04f;
 
+    public Transform guiAnchor;
+
     private bool _isExposed;
 
     void OnGUI()
     {
+        //Vector2 pos = Camera.main.WorldToViewportPoint(guiAnchor.position);
+        //Debug.Log("gui position: " + pos.x + ", " + pos.y);
         //draw the background:
-        GUI.BeginGroup(new Rect(pos.x, pos.y, size.x, size.y));
+        float posx = (Screen.width / 2) - (size.x / 2);
+        GUI.BeginGroup(new Rect(posx, pos.y, size.x, size.y));
         GUI.Box(new Rect(0, 0, size.x, size.y), emptyTex);
 
         //draw the filled-in part:
         GUI.BeginGroup(new Rect(0, 0, size.x * exposure, size.y));
-        GUI.Box(new Rect(0, 0, size.x, size.y), fullTex);
+        GUI.Box(new Rect(0, 0, posx, pos.y), fullTex);
         GUI.EndGroup();
         GUI.EndGroup();
     }
 
     // Use this for initialization
 	void Start () {
-	
+        guiAnchor = GameObject.Find("Exposure Progress Bar Anchor").transform;
 	}
 	
 	// Update is called once per frame
