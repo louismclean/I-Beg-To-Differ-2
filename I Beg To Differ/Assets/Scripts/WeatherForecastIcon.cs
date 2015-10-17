@@ -17,4 +17,9 @@ public class WeatherForecastIcon : MonoBehaviour {
 	void Update () {
      
 	}
+
+    public void SetSprite(Sprite sprite)
+    {
+        spriteRenderer.sprite = sprite;
+    }
 }
