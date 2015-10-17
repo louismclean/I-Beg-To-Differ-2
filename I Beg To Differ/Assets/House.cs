@@ -6,7 +6,8 @@ public class House : MonoBehaviour {
     public SpriteRenderer houseFront;
     public SpriteRenderer houseBack;
    
-    public float fadeRate = 3.0f;
+    private float fadeRate = 2.0f;
+    private float disableFadeTimer = 0f;
 
     private bool m_isInHouse;
     private float m_alphaTarget;
@@ -29,7 +30,15 @@ public class House : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        houseFront.color = new Color(1f, 1f, 1f, Mathf.MoveTowards(houseFront.color.a, m_alphaTarget, Time.deltaTime * fadeRate));
+        if(disableFadeTimer > 0f)
+        {
+            disableFadeTimer -= Time.deltaTime;
+            Debug.Log(disableFadeTimer);            
+        }
+        else
+        {
+            houseFront.color = new Color(1f, 1f, 1f, Mathf.MoveTowards(houseFront.color.a, m_alphaTarget, Time.deltaTime * fadeRate));
+        }
 	}
 
     void OnGUI()
@@ -96,11 +105,18 @@ public class House : MonoBehaviour {
         Debug.Log("getting element: " + (((frameLevel - 1) * 3) + materialLevel-1));
 
         houseFront.sprite = houseFrontSprite[((frameLevel - 1) * 3) + materialLevel-1];
+
+        //houseFront.color = new Color(1f, 1f, 1f, 1f);
+        //disableFadeTimer = 2f;
     }
 
     void UpgradeHouseMaterials()
     {
         materialLevel++;
+        
         houseFront.sprite = houseFrontSprite[((frameLevel - 1) * 3)+materialLevel-1];
+        
+        //houseFront.color = new Color(1f, 1f, 1f, 1f);
+        //disableFadeTimer = 2f;
     }
 }

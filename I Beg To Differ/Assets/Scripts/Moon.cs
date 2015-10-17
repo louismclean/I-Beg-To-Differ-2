@@ -23,7 +23,7 @@ public class Moon : MonoBehaviour {
     {
         if (worldTime < 0.5f)
         {
-            return (1f - worldTime);            
+            return (0.5f - worldTime) * 2;            
         }
         else
         {

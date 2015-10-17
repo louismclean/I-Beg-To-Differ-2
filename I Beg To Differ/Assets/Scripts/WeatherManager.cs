@@ -45,13 +45,34 @@ public class WeatherManager : MonoBehaviour {
         currentWeather = WeatherType.Sun;
         WeatherForecast = new Queue<WeatherType>();
 
-        //First few days are nice
-        for (int i = 0; i < 3; i++)
-        {
-            WeatherForecast.Enqueue(WeatherType.Sun);
-        }
-        //Fourth day is rainy
+        WeatherForecastIcon newIcon;
+
+        //First day is nice        
+        newIcon = Instantiate(WeatherForecastIconPrefab, transform.position, transform.rotation) as WeatherForecastIcon;
+        newIcon.transform.parent = transform.parent;
+        newIcon.lifeTime = WorldTime.dayDuration * 3;
+        newIcon.SetSprite(SunnySprite);
+
+        //Second day is nice
+        WeatherForecast.Enqueue(WeatherType.Sun);
+        newIcon = Instantiate(WeatherForecastIconPrefab, transform.position, transform.rotation) as WeatherForecastIcon;
+        newIcon.transform.parent = transform.parent;
+        newIcon.lifeTime = WorldTime.dayDuration * 2;
+        newIcon.SetSprite(SunnySprite);        
+
+        //Third day is rainy
         WeatherForecast.Enqueue(WeatherType.Rain);
+        newIcon = Instantiate(WeatherForecastIconPrefab, transform.position, transform.rotation) as WeatherForecastIcon;
+        newIcon.transform.parent = transform.parent;
+        newIcon.lifeTime = WorldTime.dayDuration * 1;
+        newIcon.SetSprite(RainySprite);
+
+        //Fourth day is nice
+        WeatherForecast.Enqueue(WeatherType.Sun);
+        newIcon = Instantiate(WeatherForecastIconPrefab, transform.position, transform.rotation) as WeatherForecastIcon;
+        newIcon.transform.parent = transform.parent;
+        newIcon.lifeTime = 0;
+        newIcon.SetSprite(SunnySprite);
     }
 
 	void Start () 
@@ -117,8 +138,6 @@ public class WeatherManager : MonoBehaviour {
 
         WeatherForecastIcon newIcon = Instantiate(WeatherForecastIconPrefab, transform.position, transform.rotation) as WeatherForecastIcon;
         newIcon.transform.parent = transform.parent;
-        weatherForecastIcons.Add(newIcon);
-        weatherForecastIcons.RemoveAt(0);
         
         Sprite newSprite = SunnySprite;
        

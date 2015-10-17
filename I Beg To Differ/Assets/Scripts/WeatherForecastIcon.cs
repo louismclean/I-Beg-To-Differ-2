@@ -25,7 +25,7 @@ public class WeatherForecastIcon : MonoBehaviour {
 
         transform.position = Vector3.Lerp(rightAnchor.position, leftAnchor.position, lifeTime / (WorldTime.dayDuration * WeatherManager.ForecastDays));
 
-        if (lifeTime > WorldTime.dayDuration * WeatherManager.ForecastDays)
+        if (lifeTime > (WorldTime.dayDuration * WeatherManager.ForecastDays))
         {
             Destroy(this.gameObject);
         }
