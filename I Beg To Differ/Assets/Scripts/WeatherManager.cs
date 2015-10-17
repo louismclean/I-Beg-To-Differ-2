@@ -9,6 +9,15 @@ public class WeatherManager : MonoBehaviour {
     public float WeatherDuration = 90f;
     public float currentWeatherTimeRemaining;
     public Queue<WeatherType> WeatherForecast;
+    public Sprite SunnySprite;
+    public Sprite RainySprite;
+    public Sprite SnowySprite;
+    public Sprite VolcanoSprite;
+
+    public WeatherForecastIcon today;
+    public WeatherForecastIcon tomorrow;
+    public WeatherForecastIcon twodays;
+    public WeatherForecastIcon threedays;
 
     void Awake()
     {
