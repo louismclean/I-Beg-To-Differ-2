@@ -7,7 +7,7 @@ TagManager:
   - coin
   - ResourceManager
   - WorldTime
-  - UpwardJump
+  - ResourcePickup
   layers:
   - Default
   - TransparentFX
