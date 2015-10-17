@@ -52,7 +52,7 @@ public class WeatherManager : MonoBehaviour {
        // }
 	}
 
-    void ChangeWeather()
+    public void ChangeWeather()
     {
         currentWeather = WeatherForecast.Dequeue();
         WeatherType nextWeather = GetNextWeather();
