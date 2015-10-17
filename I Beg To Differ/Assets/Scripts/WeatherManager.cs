@@ -21,14 +21,21 @@ public class WeatherManager : MonoBehaviour {
     public GameObject snowParticleSystem;
     public GameObject sunnySystem;
 
+    public Transform forecastLeftAnchor;
+    public Transform forecastRightAnchor;
+
     void Awake()
     {
         currentWeather = WeatherType.Sun;
         WeatherForecast = new Queue<WeatherType>();
-        for (int i = 0; i < 4; i++)
+
+        //First few days are nice
+        for (int i = 0; i < 3; i++)
         {
-            WeatherForecast.Enqueue(GetNextWeather());
+            WeatherForecast.Enqueue(WeatherType.Sun);
         }
+        //Fourth day is rainy
+        WeatherForecast.Enqueue(WeatherType.Rain);
     }
 
 	void Start () 
@@ -39,12 +46,12 @@ public class WeatherManager : MonoBehaviour {
 	
 	void Update () 
     {
-        currentWeatherTimeRemaining -= Time.deltaTime;
-        if(currentWeatherTimeRemaining < 0f)
-        {
-            ChangeWeather();
-            currentWeatherTimeRemaining = WeatherDuration;
-        }
+        //currentWeatherTimeRemaining -= Time.deltaTime;
+       // if(currentWeatherTimeRemaining < 0f)
+       // {
+       //     ChangeWeather();
+       //     currentWeatherTimeRemaining = WeatherDuration;
+       // }
 
         //foreach (WeatherForecastIcon icon in weatherForecastIcons)
         //{

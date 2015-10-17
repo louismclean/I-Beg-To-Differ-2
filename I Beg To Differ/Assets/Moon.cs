@@ -14,7 +14,7 @@ public class Moon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.localScale = new Vector3(1 + moonScale * Mathf.Abs(Mathf.Cos(Time.time)), 1 + moonScale * Mathf.Cos(Mathf.Sin(Time.time)), 0);
+        transform.localScale = new Vector3(0.75f + moonScale * Mathf.Abs(Mathf.Cos(Time.time)), 0.75f + moonScale * Mathf.Cos(Mathf.Sin(Time.time)), 0);
         //transform.rotation = Quaternion.identity;
         transform.position = new Vector3(transform.position.x, -10f + MoonHeight(worldTime.time) * maxHeight, transform.position.z);
 	}
