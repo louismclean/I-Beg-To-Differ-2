@@ -257,6 +257,11 @@ public class WeatherManager : MonoBehaviour {
 
     WeatherType GetNextWeather()
     {
+        if(WorldTime.day == 7)
+        {
+            return WeatherType.Volcano;
+        }
+
         float r = Random.Range(0f,1f);
 
         if(WorldTime.day > endGame)
