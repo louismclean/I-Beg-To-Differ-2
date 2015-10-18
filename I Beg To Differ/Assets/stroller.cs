@@ -8,7 +8,6 @@ public class stroller : MonoBehaviour {
 	float m_Range = 0.1f;
 	float speed = 1.5f;
 	float ticker;
-	float x_base;
 	Vector3 target;
 
 
@@ -19,7 +18,6 @@ public class stroller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		x_base = this.transform.position.x;
 		ticker = speed;
 		pauseTimer = pauseLength;
 	}

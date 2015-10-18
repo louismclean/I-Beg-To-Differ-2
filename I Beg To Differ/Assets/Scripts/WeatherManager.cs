@@ -267,16 +267,12 @@ public class WeatherManager : MonoBehaviour {
 		{
 		case WeatherType.Sun:
 			return "sun";
-			break;
 		case WeatherType.Rain:
 			return "rain";
-			break;
 		case WeatherType.Snow:
 			return "snow";
-			break;
 		case WeatherType.Volcano:
 			return "volcano";
-			break;
 		}
 		return "";
 	}

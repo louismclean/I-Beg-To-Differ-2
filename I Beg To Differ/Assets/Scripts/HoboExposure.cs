@@ -102,8 +102,6 @@ public class HoboExposure : MonoBehaviour {
         {
             return false;
         }
-        
-        WeatherManager.WeatherType currentWeather = weatherManager.currentWeather;
 
         switch (weatherManager.currentWeather)
         {

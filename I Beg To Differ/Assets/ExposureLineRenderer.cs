@@ -31,7 +31,6 @@ public class ExposureLineRenderer : MonoBehaviour {
         Vector3 pos = Vector3.Lerp(leftAnchor.position, rightAnchor.position, hExpose.exposure);
         filllineRenderer.SetPosition(1, pos);
 
-        Color endColor = Color.Lerp(Color.green, Color.blue, hExpose.exposure);
         filllineRenderer.SetColors(Color.green, Color.blue);
 	}
 }
