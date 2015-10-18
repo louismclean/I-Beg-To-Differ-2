@@ -257,6 +257,8 @@ public class WeatherManager : MonoBehaviour {
 
     WeatherType GetNextWeather()
     {
+
+        //day 10 volcano
         if(WorldTime.day == 7)
         {
             return WeatherType.Volcano;

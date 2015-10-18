@@ -19,6 +19,10 @@ public class MaterialButtonBuy : MonoBehaviour {
 
     void OnMouseDown()
     {
-        myHouse.UpgradeHouseMaterials();
+        if(myHouse.materialLevel < House.MAXMATERIALLEVEL)
+        {
+            myHouse.UpgradeHouseMaterials();
+        }
+       
     }
 }

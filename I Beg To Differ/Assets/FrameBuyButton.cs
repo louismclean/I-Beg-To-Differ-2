@@ -17,6 +17,9 @@ public class FrameBuyButton : MonoBehaviour {
 
     void OnMouseDown()
     {
-        myHouse.UpgradeHouseFrame();
+        if (myHouse.frameLevel < House.MAXFRAMELEVEL)
+        {
+            myHouse.UpgradeHouseFrame();
+        }        
     }
 }
