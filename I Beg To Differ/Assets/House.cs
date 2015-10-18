@@ -178,6 +178,7 @@ public class House : MonoBehaviour {
         {
             other.SendMessage("SetIsInHouse", true);
             m_isInHouse = true;
+            disableFadeTimer = 1f;
             m_alphaTarget = 0.0f;
         }
     }

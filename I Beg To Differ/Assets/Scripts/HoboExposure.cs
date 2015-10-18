@@ -41,13 +41,15 @@ public class HoboExposure : MonoBehaviour {
     // Use this for initialization
 	void Start () {
         guiAnchor = GameObject.Find("Exposure Progress Bar Anchor").transform;
-        hControl = GetComponent<HoboController>();
+        hControl = gameObject.GetComponent<HoboController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        _isExposed = true;
+        _isExposed = !hControl.m_isInHouse;
+        Debug.Log("is exposed: " + _isExposed);
+        Debug.Log("exposure: " + exposure);
 
 	    if(_isExposed)
         {
