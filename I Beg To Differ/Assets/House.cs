@@ -111,10 +111,12 @@ public class House : MonoBehaviour {
             buymenu2.SetActive(true);
 
             upgradeCost = getFrameUpgradeCost(frameLevel);
-            cannotBuy2Frame.SetActive(frameLevel < MAXFRAMELEVEL && !m_resourceManager.CouldSpend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost));
+            cannotBuy2Frame.SetActive(frameLevel >= MAXFRAMELEVEL || !m_resourceManager.CouldSpend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost));
 
             upgradeCost = getMaterialUpgradeCost(frameLevel,materialLevel);
-            cannotbuy2Material.SetActive(materialLevel < MAXMATERIALLEVEL && !m_resourceManager.CouldSpend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost));
+            Debug.Log("MATERIAL LEVEL " + materialLevel);
+            Debug.Log("MAX MATERIAL LEVEL " + MAXMATERIALLEVEL);
+            cannotbuy2Material.SetActive(materialLevel >= MAXMATERIALLEVEL || !m_resourceManager.CouldSpend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost));
         }
         else
         {
