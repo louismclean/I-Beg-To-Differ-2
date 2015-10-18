@@ -9,14 +9,31 @@ public class SpawnerManager : MonoBehaviour {
     public int maxLooseCoins = 3;
     public int maxLooseBlankets = 7;
     public int maxLooseWoods = 10;
-    List<ItemSpawner> ChangeSpawners;
+    List<ItemSpawner> CoinSpawners;
     List<ItemSpawner> BlanketSpawners;
-    List<ItemSpawner> WoodsSpawners; 
+    List<ItemSpawner> WoodSpawners; 
     
 
 	// Use this for initialization
 	void Start () {
-	
+       
+        GameObject[] objectList = GameObject.FindGameObjectsWithTag("CoinSpawner");
+        foreach(GameObject go in objectList)
+        {
+            CoinSpawners.Add(go.GetComponent<ItemSpawner>());
+        }
+
+        objectList = GameObject.FindGameObjectsWithTag("BlanketSpawner");
+        foreach (GameObject go in objectList)
+        {
+            BlanketSpawners.Add(go.GetComponent<ItemSpawner>());
+        }
+
+        objectList = GameObject.FindGameObjectsWithTag("WoodSpawner");
+        foreach (GameObject go in objectList)
+        {
+            WoodSpawners.Add(go.GetComponent<ItemSpawner>());
+        }
 	}
 	
 	// Update is called once per frame
@@ -26,7 +43,39 @@ public class SpawnerManager : MonoBehaviour {
 
     public bool CanSpawn(ResourceType a_resourcetype)
     {
-        //put logic here
+        int count = 0;
+        List<ItemSpawner> itemSpawners = CoinSpawners;
+        int max = 0;
+        
+        switch(a_resourcetype)
+        {
+            case ResourceType.Coin:
+                itemSpawners = CoinSpawners;
+                max = maxLooseCoins;
+                break;
+            case ResourceType.Blanket:
+                itemSpawners = BlanketSpawners;
+                max = maxLooseBlankets;
+                break;
+            case ResourceType.Wood:
+                itemSpawners = WoodSpawners;
+                max = maxLooseWoods;
+                break;
+        }
+
+        foreach (ItemSpawner spawner in itemSpawners)
+        {
+            if(spawner.SpawnedItemIsWaiting())
+            {
+                count++;
+            }
+        }
+        
+        if (count > max)
+        {
+            return false;
+        }
+
         return true;
     }
 }

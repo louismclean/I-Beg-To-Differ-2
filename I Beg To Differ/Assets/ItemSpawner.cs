@@ -43,16 +43,12 @@ public class ItemSpawner : MonoBehaviour {
 
     bool CanSpawn()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
-        for (int i = 0; i < colliders.Length; i++)
+        if(Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, this.transform.position) < m_PlayerSpawnBlockProximity)
         {
-            if (colliders[i].gameObject.tag == "ResourcePickup")
-            {
-                return false;
-            }
+            return false;
         }
 
-        if(Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, this.transform.position) < m_PlayerSpawnBlockProximity)
+        if(SpawnedItemIsWaiting())
         {
             return false;
         }
@@ -63,5 +59,18 @@ public class ItemSpawner : MonoBehaviour {
         }
 
         return true;
+    }
+
+    public bool SpawnedItemIsWaiting()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject.tag == "ResourcePickup")
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
