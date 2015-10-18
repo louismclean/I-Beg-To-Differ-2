@@ -24,7 +24,8 @@ public class MusicManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (!current.isPlaying)
+			current.Play ();
 		if(wm.getWeather() != weath){
 			current.Stop();
 			weath = wm.getWeather();
