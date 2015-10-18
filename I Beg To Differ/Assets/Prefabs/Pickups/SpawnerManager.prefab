@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b104cf996d0f04481a9701e67f5b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLooseChange: 3
+  maxLooseCoins: 3
   maxLooseBlankets: 7
   maxLooseWoods: 10
 --- !u!1001 &100100000
