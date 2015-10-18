@@ -3,20 +3,20 @@ using System.Collections;
 
 public struct Cost
 {
-    public int coinCost;
     public int woodCost;
     public int blanketCost;
+    public int coinCost;
 
-    public Cost(int c, int w, int b)
-    {
-        coinCost = c;
+    public Cost(int w, int b, int c)
+    {        
         woodCost = w;
         blanketCost = b;
+        coinCost = c;
     }
 
     public string toString()
     {
-        return coinCost + " coins, " + woodCost + " wood, and " + blanketCost + " blankets";
+        return woodCost + " wood, " + blanketCost + " blankets, and " + coinCost + " coins";
     }
 }
 
@@ -157,7 +157,7 @@ public class House : MonoBehaviour {
     void UpgradeHouseFrame()
     {
         Cost upgradeCost = getFrameUpgradeCost(frameLevel);
-        if(m_resourceManager.spend(upgradeCost.coinCost, upgradeCost.woodCost, upgradeCost.blanketCost))
+        if (m_resourceManager.spend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost))
         {
             frameLevel++;
             materialLevel = 1;
@@ -178,7 +178,7 @@ public class House : MonoBehaviour {
     void UpgradeHouseMaterials()
     {
         Cost upgradeCost = getFrameUpgradeCost(frameLevel);
-        if (m_resourceManager.spend(upgradeCost.coinCost, upgradeCost.woodCost, upgradeCost.blanketCost))
+        if (m_resourceManager.spend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost))
         {
             materialLevel++;
 
@@ -191,11 +191,12 @@ public class House : MonoBehaviour {
 
     Cost getFrameUpgradeCost(int frameLevel)
     {
+        int woodCost = FrameWoodCost[frameLevel];
         int blanketCost = FrameBlanketCost[frameLevel];
         int coinCost = FrameCoinCost[frameLevel];
-        int woodCost = FrameWoodCost[frameLevel];
+        
 
-        return new Cost(blanketCost, coinCost, woodCost);
+        return new Cost(woodCost, blanketCost, coinCost);
     }
 
     Cost getMaterialUpgradeCost(int frameLevel, int materialLevel)
@@ -204,6 +205,6 @@ public class House : MonoBehaviour {
         int coinCost = MaterialCoinCost[((frameLevel - 1) * 2) + materialLevel-1];
         int woodCost = MaterialWoodCost[((frameLevel - 1) * 2) + materialLevel-1];
 
-        return new Cost(blanketCost, coinCost, woodCost);
+        return new Cost(woodCost, blanketCost, coinCost);
     }
 }
