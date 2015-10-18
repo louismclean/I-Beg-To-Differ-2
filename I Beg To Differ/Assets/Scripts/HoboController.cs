@@ -37,10 +37,7 @@ public class HoboController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
-        Debug.Log("is in house: " + m_isInHouse);
-       
+	void Update () {       
 
 		if (this.m_Rigidbody2D.velocity.y > 0) {
 			this.GetComponent<BoxCollider2D> ().enabled = false;

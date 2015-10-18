@@ -24,7 +24,6 @@ public class Resource : MonoBehaviour {
 		if(quantity>=amnt){
 			return true;
 		}
-        Debug.Log("Want to spend " + amnt + " but only have " + quantity);
 		return false;
 	}
 
