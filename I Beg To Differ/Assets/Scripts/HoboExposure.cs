@@ -12,6 +12,8 @@ public class HoboExposure : MonoBehaviour {
     public Texture2D fullTex;
     public WeatherManager weatherManager;
 
+    public float homeRestoreRate = 0.025f;
+
     public float SunnyExposureRestoreRate = 0.01f;
     public float RainyExposureRate = 0.02f;
     public float SnowyExposureRate = 0.04f;
@@ -49,27 +51,28 @@ public class HoboExposure : MonoBehaviour {
 	void Update () {
 
         _isExposed = !hControl.m_isInHouse;
-        Debug.Log("is exposed: " + _isExposed);
-        Debug.Log("exposure: " + exposure);
 
+        //If not protected, take some exposure
 	    if(!isProtected())
         {
             switch(weatherManager.currentWeather)
             {
-                case WeatherManager.WeatherType.Sun:
-                    //exposure = Mathf.Max(exposure - Time.deltaTime * SunnyExposureRestoreRate, 0f);
-                    break;
                 case WeatherManager.WeatherType.Rain:
                     exposure = Mathf.Min(exposure + Time.deltaTime * RainyExposureRate * weatherManager.weatherIntensity, 1f);
                     break;
                 case WeatherManager.WeatherType.Snow:
                     exposure = Mathf.Min(exposure + Time.deltaTime * SnowyExposureRate * weatherManager.weatherIntensity, 1f);
                     break;
-                case WeatherManager.WeatherType.Volcano:
-                    break;
             }
         }
 
+        //If not exposed, regain some health
+        if(!_isExposed)
+        {
+            exposure = Mathf.Max(exposure - Time.deltaTime * homeRestoreRate * myHouse.frameLevel, 0f);
+        }
+
+        //If you're overexposed, die
         if (exposure >= max_exposure && !hControl.m_isDying)
         {
             Debug.Log("dying now kk");
@@ -106,23 +109,21 @@ public class HoboExposure : MonoBehaviour {
         {
             //switch scene based on current weather
             case WeatherManager.WeatherType.Sun:
-                StartCoroutine(WaitAndLoadLevel("GameOverSun"));
-                break;
+                return true;
             case WeatherManager.WeatherType.Rain:
-                StartCoroutine(WaitAndLoadLevel("GameOverRain"));
-                break;
+                return myHouse.frameLevel >= weatherManager.weatherIntensity;
             case WeatherManager.WeatherType.Snow:
-                StartCoroutine(WaitAndLoadLevel("GameOverSnow"));
-                break;
+                return myHouse.materialLevel >= weatherManager.weatherIntensity;
             case WeatherManager.WeatherType.Volcano:
-                StartCoroutine(WaitAndLoadLevel("GameOverVolcano"));
-                break;
+                return myHouse.materialLevel >= 3;
         }
+
+        return true;
     }
 
     IEnumerator WaitAndLoadLevel(string levelName)
     {
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(0.5f);
         Application.LoadLevel(levelName);
     }    
 }
