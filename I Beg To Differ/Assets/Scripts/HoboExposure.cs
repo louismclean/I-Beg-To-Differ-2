@@ -17,6 +17,7 @@ public class HoboExposure : MonoBehaviour {
     public float SnowyExposureRate = 0.04f;
 
     public Transform guiAnchor;
+    public House myHouse;
 
     private bool _isExposed;
 
@@ -27,20 +28,20 @@ public class HoboExposure : MonoBehaviour {
         //Vector2 pos = Camera.main.WorldToViewportPoint(guiAnchor.position);
         //Debug.Log("gui position: " + pos.x + ", " + pos.y);
         //draw the background:
-        float posx = (Screen.width / 2) - (size.x / 2);
-        GUI.BeginGroup(new Rect(posx, pos.y, size.x, size.y));
-        GUI.Box(new Rect(0, 0, size.x, size.y), emptyTex);
+        //float posx = (Screen.width / 2) - (size.x / 2);
+        //GUI.BeginGroup(new Rect(posx, pos.y, size.x, size.y));
+        //GUI.Box(new Rect(0, 0, size.x, size.y), emptyTex);
 
         //draw the filled-in part:
-        GUI.BeginGroup(new Rect(0, 0, size.x * exposure, size.y));
-        GUI.Box(new Rect(0, 0, posx, pos.y), fullTex);
-        GUI.EndGroup();
-        GUI.EndGroup();
+        //GUI.BeginGroup(new Rect(0, 0, size.x * exposure, size.y));
+       // GUI.Box(new Rect(0, 0, posx, pos.y), fullTex);
+       // GUI.EndGroup();
+        //GUI.EndGroup();
     }
 
     // Use this for initialization
 	void Start () {
-        guiAnchor = GameObject.Find("Exposure Progress Bar Anchor").transform;
+        //guiAnchor = GameObject.Find("Exposure Progress Bar Anchor").transform;
         hControl = gameObject.GetComponent<HoboController>();
 	}
 	
@@ -51,7 +52,7 @@ public class HoboExposure : MonoBehaviour {
         Debug.Log("is exposed: " + _isExposed);
         Debug.Log("exposure: " + exposure);
 
-	    if(_isExposed)
+	    if(!isProtected())
         {
             switch(weatherManager.currentWeather)
             {
@@ -74,8 +75,8 @@ public class HoboExposure : MonoBehaviour {
             Debug.Log("dying now kk");
             hControl.m_isDying = true;
 			switch(weatherManager.currentWeather)
-            //switch scene based on current weather
             {
+                //switch scene based on current weather
                 case WeatherManager.WeatherType.Sun:
                     StartCoroutine(WaitAndLoadLevel("GameOverSun"));
                     break;
@@ -91,6 +92,33 @@ public class HoboExposure : MonoBehaviour {
             }	
 		}
 	}
+
+    bool isProtected()
+    {
+        if(_isExposed)
+        {
+            return false;
+        }
+        
+        WeatherManager.WeatherType currentWeather = weatherManager.currentWeather;
+
+        switch (weatherManager.currentWeather)
+        {
+            //switch scene based on current weather
+            case WeatherManager.WeatherType.Sun:
+                StartCoroutine(WaitAndLoadLevel("GameOverSun"));
+                break;
+            case WeatherManager.WeatherType.Rain:
+                StartCoroutine(WaitAndLoadLevel("GameOverRain"));
+                break;
+            case WeatherManager.WeatherType.Snow:
+                StartCoroutine(WaitAndLoadLevel("GameOverSnow"));
+                break;
+            case WeatherManager.WeatherType.Volcano:
+                StartCoroutine(WaitAndLoadLevel("GameOverVolcano"));
+                break;
+        }
+    }
 
     IEnumerator WaitAndLoadLevel(string levelName)
     {
