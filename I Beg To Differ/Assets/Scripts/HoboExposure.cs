@@ -66,6 +66,7 @@ public class HoboExposure : MonoBehaviour {
 
 		if (exposure > max_exposure) {
 			Application.LoadLevel("GameOver");
+			//switch scene based on current weather
 		}
 	}
 }
