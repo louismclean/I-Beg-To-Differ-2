@@ -261,4 +261,23 @@ public class WeatherManager : MonoBehaviour {
             return WeatherType.Sun;
         }        
     }
+
+	public string getWeather(){
+		switch (currentWeather)
+		{
+		case WeatherType.Sun:
+			return "sun";
+			break;
+		case WeatherType.Rain:
+			return "rain";
+			break;
+		case WeatherType.Snow:
+			return "snow";
+			break;
+		case WeatherType.Volcano:
+			return "volcano";
+			break;
+		}
+		return "";
+	}
 }

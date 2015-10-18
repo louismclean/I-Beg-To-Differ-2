@@ -85,6 +85,48 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &712885191
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 460372, guid: ef6f21c829e0144adb619351bd8023ea, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.94006515
+      objectReference: {fileID: 0}
+    - target: {fileID: 460372, guid: ef6f21c829e0144adb619351bd8023ea, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .00022226572
+      objectReference: {fileID: 0}
+    - target: {fileID: 460372, guid: ef6f21c829e0144adb619351bd8023ea, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 460372, guid: ef6f21c829e0144adb619351bd8023ea, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 460372, guid: ef6f21c829e0144adb619351bd8023ea, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 460372, guid: ef6f21c829e0144adb619351bd8023ea, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 460372, guid: ef6f21c829e0144adb619351bd8023ea, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 460372, guid: ef6f21c829e0144adb619351bd8023ea, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ef6f21c829e0144adb619351bd8023ea, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1084293105
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +181,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!82 &1084293108
 AudioSource:
   m_ObjectHideFlags: 0
@@ -295,7 +337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1001 &1747324630
 Prefab:
   m_ObjectHideFlags: 0
@@ -338,6 +380,10 @@ Prefab:
     - target: {fileID: 10222116, guid: 5c193e67b148346829a2d1c63a4db9be, type: 2}
       propertyPath: m_Color.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404566, guid: 5c193e67b148346829a2d1c63a4db9be, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c193e67b148346829a2d1c63a4db9be, type: 2}
