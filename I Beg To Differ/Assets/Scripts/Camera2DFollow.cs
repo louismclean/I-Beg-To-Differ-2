@@ -11,6 +11,11 @@ namespace UnityStandardAssets._2D
         public float lookAheadReturnSpeed = 0.5f;
         public float lookAheadMoveThreshold = 0.1f;
 
+		public GameObject lowerBound;
+		public GameObject upperBound;
+		public float threshold = 5f;
+		public float defaultheight = 0f;
+
         private float m_OffsetZ;
         private Vector3 m_LastTargetPosition;
         private Vector3 m_CurrentVelocity;
@@ -34,9 +39,23 @@ namespace UnityStandardAssets._2D
             Vector3 targetPosition = new Vector3(target.position.x, transform.position.y, transform.position.z);
             transform.position = targetPosition;
             */
+
+			handleVertical ();
         }
 
-        private void FixedUpdate()
+		private void handleVertical (){
+			if (this.transform.position.y < lowerBound.transform.position.y) {
+				this.transform.position = new Vector3 (this.transform.position.x,
+				                                       lowerBound.transform.position.y, this.transform.position.z);
+			} else if (this.transform.position.y > upperBound.transform.position.y) {
+				this.transform.position = new Vector3 (this.transform.position.x,
+				                                       upperBound.transform.position.y, this.transform.position.z);
+
+			}
+
+		}
+        
+		private void FixedUpdate()
         {
             // only update lookahead pos if accelerating or changed direction
             
