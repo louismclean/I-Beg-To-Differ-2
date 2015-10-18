@@ -216,7 +216,7 @@ public class House : MonoBehaviour {
 
     public void UpgradeHouseMaterials()
     {
-        Cost upgradeCost = getFrameUpgradeCost(frameLevel);
+        Cost upgradeCost = getMaterialUpgradeCost(frameLevel, materialLevel);
         if (m_resourceManager.spend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost))
         {
             materialLevel++;
@@ -240,9 +240,9 @@ public class House : MonoBehaviour {
 
     public Cost getMaterialUpgradeCost(int frameLevel, int materialLevel)
     {
+        int woodCost = MaterialWoodCost[((frameLevel - 1) * 2) + materialLevel - 1];
         int blanketCost = MaterialBlanketCost[((frameLevel - 1) * 2) + materialLevel-1];
-        int coinCost = MaterialCoinCost[((frameLevel - 1) * 2) + materialLevel-1];
-        int woodCost = MaterialWoodCost[((frameLevel - 1) * 2) + materialLevel-1];
+        int coinCost = MaterialCoinCost[((frameLevel - 1) * 2) + materialLevel-1];     
 
         return new Cost(woodCost, blanketCost, coinCost);
     }
