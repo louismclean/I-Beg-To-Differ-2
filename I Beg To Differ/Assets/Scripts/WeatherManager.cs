@@ -40,13 +40,13 @@ public class WeatherManager : MonoBehaviour {
     public Transform forecastLeftAnchor;
     public Transform forecastRightAnchor;
 
-    private float rainEmissionRateLevel1 = 15f;
-    private float rainEmissionRateLevel2 = 30f;
-    private float rainEmissionRateLevel3 = 45f;
+    private float rainEmissionRateLevel1 = 20f;
+    private float rainEmissionRateLevel2 = 60f;
+    private float rainEmissionRateLevel3 = 150f;
 
-    private float snowEmissionRateLevel1 = 15f;
-    private float snowEmissionRateLevel2 = 30f;
-    private float snowEmissionRateLevel3 = 45f;
+    private float snowEmissionRateLevel1 = 20f;
+    private float snowEmissionRateLevel2 = 60f;
+    private float snowEmissionRateLevel3 = 150f;
 
 
     void Awake()
