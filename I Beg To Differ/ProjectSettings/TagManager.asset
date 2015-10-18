@@ -9,6 +9,10 @@ TagManager:
   - WorldTime
   - ResourcePickup
   - SpawnerManager
+  - UpwardJump
+  - BlanketSpawner
+  - CoinSpawner
+  - WoodSpawner
   layers:
   - Default
   - TransparentFX

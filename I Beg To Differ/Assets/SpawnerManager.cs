@@ -9,9 +9,9 @@ public class SpawnerManager : MonoBehaviour {
     public int maxLooseCoins = 3;
     public int maxLooseBlankets = 7;
     public int maxLooseWoods = 10;
-    List<ItemSpawner> CoinSpawners;
-    List<ItemSpawner> BlanketSpawners;
-    List<ItemSpawner> WoodSpawners; 
+    List<ItemSpawner> CoinSpawners = new List<ItemSpawner>();
+    List<ItemSpawner> BlanketSpawners = new List<ItemSpawner>();
+    List<ItemSpawner> WoodSpawners = new List<ItemSpawner>(); 
     
 
 	// Use this for initialization
