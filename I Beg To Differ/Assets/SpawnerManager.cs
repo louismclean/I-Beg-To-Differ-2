@@ -6,9 +6,9 @@ public class SpawnerManager : MonoBehaviour {
 
     public enum ResourceType {Wood, Blanket, Coin};
 
-    public int maxLooseCoins = 3;
-    public int maxLooseBlankets = 7;
-    public int maxLooseWoods = 10;
+    int maxLooseCoins = 2;
+    int maxLooseBlankets = 7;
+    int maxLooseWoods = 5;
     List<ItemSpawner> CoinSpawners = new List<ItemSpawner>();
     List<ItemSpawner> BlanketSpawners = new List<ItemSpawner>();
     List<ItemSpawner> WoodSpawners = new List<ItemSpawner>(); 
