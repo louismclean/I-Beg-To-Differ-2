@@ -4,6 +4,7 @@ using System.Collections;
 public class HoboExposure : MonoBehaviour {
 
     public float exposure;
+	public float max_exposure=1;
 
     public Vector2 pos = new Vector2(20, 40);
     public Vector2 size = new Vector2(60, 20);
@@ -62,5 +63,9 @@ public class HoboExposure : MonoBehaviour {
                     break;
             }
         }
+
+		if (exposure > max_exposure) {
+			Application.LoadLevel("GameOver");
+		}
 	}
 }
