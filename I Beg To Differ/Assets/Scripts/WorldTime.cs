@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WorldTime : MonoBehaviour {
 
-    public float time = 0.5f;
+    public float time = 0f;
     public static float dayDuration = 30f;
     private WeatherManager weatherManager;
     public static int day = 1;
