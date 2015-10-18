@@ -54,6 +54,9 @@ public class House : MonoBehaviour {
     public int[] MaterialCoinCost;
     public int[] MaterialWoodCost;
 
+    public GameObject buymenu1;
+    public GameObject buymenu2;
+
     // Use this for initialization
 	void Start () {
 
@@ -85,10 +88,27 @@ public class House : MonoBehaviour {
         {
             houseFront.color = new Color(1f, 1f, 1f, Mathf.MoveTowards(houseFront.color.a, m_alphaTarget, Time.deltaTime * fadeRate));
         }
+
+        if (m_isInHouse && frameLevel == 0)
+        {
+            buymenu1.SetActive(true);
+            buymenu2.SetActive(false);
+        }
+        else if(m_isInHouse)
+        {
+            buymenu1.SetActive(false);
+            buymenu2.SetActive(true);
+        }
+        else
+        {
+            buymenu1.SetActive(false);
+            buymenu2.SetActive(false);
+        }
 	}
 
     void OnGUI()
     {
+        /*
         if (m_isInHouse && frameLevel == 0)
         {
             // Make a background box
@@ -131,7 +151,8 @@ public class House : MonoBehaviour {
                 GUI.Label(new Rect(220, 170, 200, 20), "Max Material Achieved!");
             }
            
-        }    
+        }  
+        */
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -154,7 +175,7 @@ public class House : MonoBehaviour {
         }
     }
 
-    void UpgradeHouseFrame()
+    public void UpgradeHouseFrame()
     {
         Cost upgradeCost = getFrameUpgradeCost(frameLevel);
         if (m_resourceManager.spend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost))
@@ -175,7 +196,7 @@ public class House : MonoBehaviour {
         }        
     }
 
-    void UpgradeHouseMaterials()
+    public void UpgradeHouseMaterials()
     {
         Cost upgradeCost = getFrameUpgradeCost(frameLevel);
         if (m_resourceManager.spend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost))
@@ -189,7 +210,7 @@ public class House : MonoBehaviour {
         }        
     }
 
-    Cost getFrameUpgradeCost(int frameLevel)
+    public Cost getFrameUpgradeCost(int frameLevel)
     {
         int woodCost = FrameWoodCost[frameLevel];
         int blanketCost = FrameBlanketCost[frameLevel];
@@ -199,7 +220,7 @@ public class House : MonoBehaviour {
         return new Cost(woodCost, blanketCost, coinCost);
     }
 
-    Cost getMaterialUpgradeCost(int frameLevel, int materialLevel)
+    public Cost getMaterialUpgradeCost(int frameLevel, int materialLevel)
     {
         int blanketCost = MaterialBlanketCost[((frameLevel - 1) * 2) + materialLevel-1];
         int coinCost = MaterialCoinCost[((frameLevel - 1) * 2) + materialLevel-1];
