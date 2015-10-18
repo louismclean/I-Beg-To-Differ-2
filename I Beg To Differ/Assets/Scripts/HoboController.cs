@@ -117,13 +117,8 @@ public class HoboController : MonoBehaviour {
         //only control the player if grounded or airControl is turned on
 		if (m_Grounded || m_AirControl) 
         {
-			if(move>0 &&this.transform.position.x < xLimightRight)
-
-            // Move the character
+			// Move the character
             m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
-
-			if(move<0&&this.transform.position.x > xLimitLeft)
-				m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
 
             // If the input is moving the player right and the player is facing left...
             if (move > 0 && !m_FacingRight)
