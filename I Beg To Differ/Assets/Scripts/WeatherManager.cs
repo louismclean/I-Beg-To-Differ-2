@@ -49,6 +49,10 @@ public class WeatherManager : MonoBehaviour {
     private float snowEmissionRateLevel2 = 60f;
     private float snowEmissionRateLevel3 = 150f;
 
+    private int midGame = 10;
+    private int lateGame = 30;
+    private int endGame = 60;
+
 
     void Awake()
     {
@@ -188,9 +192,11 @@ public class WeatherManager : MonoBehaviour {
 
     public void ChangeWeather()
     {
-        currentWeather = WeatherForecast.Dequeue();
         WeatherType nextWeather = GetNextWeather();
         WeatherForecast.Enqueue(nextWeather);
+        currentWeather = WeatherForecast.Dequeue();
+
+        weatherIntensity = GetNewWeatherIntensity();
 
         WeatherForecastIcon newIcon = Instantiate(WeatherForecastIconPrefab, transform.position, transform.rotation) as WeatherForecastIcon;
         newIcon.transform.parent = transform.parent;
@@ -252,22 +258,81 @@ public class WeatherManager : MonoBehaviour {
     WeatherType GetNextWeather()
     {
         float r = Random.Range(0f,1f);
-        if(r > 0.95f)
+
+        if(WorldTime.day > endGame)
         {
-            return WeatherType.Volcano;
+            if(r > 0.5f)
+            {
+                return WeatherType.Volcano;
+            }
+            else if (r > 0.25f)
+            {
+                return WeatherType.Rain;
+            }
+            else
+            {
+                return WeatherType.Snow;
+            }
         }
-        else if(r > 0.75)
+        else if(WorldTime.day > lateGame)
         {
-            return WeatherType.Snow;
+            if (r > 0.80f)
+            {
+                return WeatherType.Volcano;
+            }
+            else if (r > 0.50f)
+            {
+                return WeatherType.Rain;
+            }
+            else if (r > 0.20f)
+            {
+                return WeatherType.Snow;
+            }
+            else
+            {
+                return WeatherType.Sun;
+            }
         }
-        else if(r > 0.5)
+        else if(WorldTime.day > midGame)
         {
-            return WeatherType.Rain;
+            if (r > 0.90f)
+            {
+                return WeatherType.Volcano;
+            }
+            else if (r > 0.60f)
+            {
+                return WeatherType.Rain;
+            }
+            else if (r > 0.30f)
+            {
+                return WeatherType.Snow;
+            }
+            else
+            {
+                return WeatherType.Sun;
+            }
         }
         else
         {
-            return WeatherType.Sun;
-        }        
+            if (r > 0.95f)
+            {
+                return WeatherType.Volcano;
+            }
+            else if (r > 0.70f)
+            {
+                return WeatherType.Rain;
+            }
+            else if (r > 0.50f)
+            {
+                return WeatherType.Snow;
+            }
+            else
+            {
+                return WeatherType.Sun;
+            }
+        }
+
+        return WeatherType.Sun;   
     }
 
 	public string getWeather(){
@@ -284,4 +349,75 @@ public class WeatherManager : MonoBehaviour {
 		}
 		return "";
 	}
+
+    int GetNewWeatherIntensity()
+    {
+        float r = Random.Range(0f, 1f);
+        switch (currentWeather)
+        {
+            //Sun intensity is 1
+            case WeatherType.Sun:
+                return 1;
+            
+            //Rain intensity
+            case WeatherType.Rain:
+                if (WorldTime.day > endGame)
+                {
+                    return 4;
+                }
+                else if (WorldTime.day > lateGame)
+                {
+                    if (r > 0.5)
+                    {
+                        return 3;
+                    }
+                    else return 2;
+                    
+                }
+                else if (WorldTime.day > midGame)
+                {
+                    if (r > 0.5)
+                    {
+                        return 2;
+                    }
+                    else return 1;
+                }
+                else
+                {
+                    return 1;
+                }
+            
+            //Snow intensity
+            case WeatherType.Snow:
+                if (WorldTime.day > endGame)
+                {
+                    return 2;
+                }
+                else if (WorldTime.day > lateGame)
+                {
+                    if (r > 0.25)
+                    {
+                        return 2;
+                    }
+                    else return 1;
+
+                }
+                else if (WorldTime.day > midGame)
+                {
+                    if (r > 0.5)
+                    {
+                        return 2;
+                    }
+                    else return 1;
+                }
+                else
+                {
+                    return 1;
+                }
+
+            case WeatherType.Volcano:
+                return 3;
+        }
+        return 1;
+    }
 }

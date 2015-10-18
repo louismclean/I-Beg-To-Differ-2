@@ -96,7 +96,7 @@ public class HoboExposure : MonoBehaviour {
 		}
 	}
 
-    bool isProtected()
+    public bool isProtected()
     {
         if(_isExposed)
         {

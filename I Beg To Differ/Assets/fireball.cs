@@ -22,7 +22,7 @@ public class fireball : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		if (col.gameObject.tag == "Player") {
+		if (col.gameObject.tag == "Player" && !exp.isProtected()) {
 			exp.exposure+= damage;
 			Destroy(this.gameObject);
 
