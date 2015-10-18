@@ -12679,6 +12679,18 @@ Prefab:
       propertyPath: cannotbuy2Material
       value: 
       objectReference: {fileID: 1659590344}
+    - target: {fileID: 6143928, guid: 4831dfd6e0ba6ce4c8c1e8d5767f7419, type: 2}
+      propertyPath: m_Offset.x
+      value: -.159999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143928, guid: 4831dfd6e0ba6ce4c8c1e8d5767f7419, type: 2}
+      propertyPath: m_Size.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 21229428, guid: 4831dfd6e0ba6ce4c8c1e8d5767f7419, type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4831dfd6e0ba6ce4c8c1e8d5767f7419, type: 2}
   m_IsPrefabParent: 0
