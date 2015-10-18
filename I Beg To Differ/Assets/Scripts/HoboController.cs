@@ -19,6 +19,7 @@ public class HoboController : MonoBehaviour {
 
 	private float xLimitLeft = -106f;
 	private float xLimightRight = 105f;
+	private float ylimit = -3.700002f;
 
     private bool m_isInHouse;
 
@@ -53,6 +54,9 @@ public class HoboController : MonoBehaviour {
             // Read the jump input in Update so button presses aren't missed.
             m_Jump = Input.GetKeyDown(KeyCode.Space);
         }	
+
+		if (this.transform.position.y < ylimit)
+			this.transform.position = new Vector3 (this.transform.position.x, ylimit, this.transform.position.z);
 	}
 
     void FixedUpdate(){
