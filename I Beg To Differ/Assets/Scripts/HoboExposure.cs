@@ -51,13 +51,13 @@ public class HoboExposure : MonoBehaviour {
             switch(weatherManager.currentWeather)
             {
                 case WeatherManager.WeatherType.Sun:
-                    exposure = Mathf.Max(exposure - Time.deltaTime * SunnyExposureRestoreRate, 0f);
+                    //exposure = Mathf.Max(exposure - Time.deltaTime * SunnyExposureRestoreRate, 0f);
                     break;
                 case WeatherManager.WeatherType.Rain:
-                    exposure = Mathf.Min(exposure + Time.deltaTime * RainyExposureRate, 1f);
+                    exposure = Mathf.Min(exposure + Time.deltaTime * RainyExposureRate * weatherManager.weatherIntensity, 1f);
                     break;
                 case WeatherManager.WeatherType.Snow:
-                    exposure = Mathf.Min(exposure + Time.deltaTime * SnowyExposureRate, 1f);
+                    exposure = Mathf.Min(exposure + Time.deltaTime * SnowyExposureRate * weatherManager.weatherIntensity, 1f);
                     break;
                 case WeatherManager.WeatherType.Volcano:
                     break;

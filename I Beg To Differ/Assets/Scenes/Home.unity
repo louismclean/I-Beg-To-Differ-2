@@ -3353,7 +3353,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 376333005}
   - 212: {fileID: 376333004}
-  - 61: {fileID: 376333003}
   m_Layer: 0
   m_Name: sidewalk
   m_TagString: Untagged
@@ -3361,19 +3360,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &376333003
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 376333002}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1.20000005, y: .99000001}
 --- !u!212 &376333004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4057,7 +4043,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 481413252}
   - 212: {fileID: 481413251}
-  - 61: {fileID: 481413250}
   m_Layer: 0
   m_Name: ashphalt
   m_TagString: Untagged
@@ -4065,19 +4050,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &481413250
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 481413249}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1.20000005, y: .99000001}
 --- !u!212 &481413251
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16334,6 +16306,10 @@ Prefab:
       propertyPath: snowParticleSystem
       value: 
       objectReference: {fileID: 1060946165}
+    - target: {fileID: 435400, guid: 27b75cf68511df14face2beec6c013af, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 11.04
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27b75cf68511df14face2beec6c013af, type: 2}
   m_IsPrefabParent: 0
