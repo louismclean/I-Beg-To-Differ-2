@@ -477,18 +477,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1579324988}
-  m_Text: 'How to Play
-
-    Hide in your shelter to avoid exposure
-
-
-
-    Collect wood, blankets and coins
-
-    to upgrade shelter
-
-
-    [A D] to move, [Space] to jump'
+  m_Text: "How to Play\nHide in your shelter to avoid exposure\n\n\nCollect wood,
+    blankets and coins\nto upgrade shelter\n\n[A D] to move, [Space] to jump\n\n     [W]
+    to beg"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
