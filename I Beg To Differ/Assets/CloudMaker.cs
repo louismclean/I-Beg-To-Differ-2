@@ -11,12 +11,12 @@ public class CloudMaker : MonoBehaviour {
 	public Color snowCol;
 	public Color fireCol;
 
-	float timer = 10f;
+	float timer = 4f;
 	float ticker;
 
 	float colorSpeed = 1f;
 
-	float size = 0.002f;
+	float size = 0.0002f;
 
 	Color targetCol;
 
