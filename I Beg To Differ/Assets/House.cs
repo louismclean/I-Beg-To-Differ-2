@@ -31,7 +31,7 @@ public class House : MonoBehaviour {
     private float disableFadeTimer = 0f;
 
     private bool m_isInHouse;
-    private float m_alphaTarget;
+    private float m_alphaTarget = 1f;
 
     public GUIStyle MenuGUIStyle;
 

@@ -23,6 +23,8 @@ public class HoboController : MonoBehaviour {
 
     private bool m_isInHouse;
 
+    public bool m_isDying = false;
+
     void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();

@@ -20,6 +20,8 @@ public class HoboExposure : MonoBehaviour {
 
     private bool _isExposed;
 
+    private HoboController hControl;
+
     void OnGUI()
     {
         //Vector2 pos = Camera.main.WorldToViewportPoint(guiAnchor.position);
@@ -39,6 +41,7 @@ public class HoboExposure : MonoBehaviour {
     // Use this for initialization
 	void Start () {
         guiAnchor = GameObject.Find("Exposure Progress Bar Anchor").transform;
+        hControl = GetComponent<HoboController>();
 	}
 	
 	// Update is called once per frame
@@ -65,8 +68,29 @@ public class HoboExposure : MonoBehaviour {
         }
 
 		if (exposure > max_exposure) {
-			Application.LoadLevel("GameOver");
-			//switch scene based on current weather
+            hControl.m_isDying = true;
+			switch(weatherManager.currentWeather)
+            //switch scene based on current weather
+            {
+                case WeatherManager.WeatherType.Sun:
+                    StartCoroutine(WaitAndLoadLevel("GameOverSun"));
+                    break;
+                case WeatherManager.WeatherType.Rain:
+                    StartCoroutine(WaitAndLoadLevel("GameOverRain"));
+                    break;
+                case WeatherManager.WeatherType.Snow:
+                    StartCoroutine(WaitAndLoadLevel("GameOverSnow"));
+                    break;
+                case WeatherManager.WeatherType.Volcano:
+                    StartCoroutine(WaitAndLoadLevel("GameOverVolcano"));
+                    break;
+            }	
 		}
 	}
+
+    IEnumerator WaitAndLoadLevel(string levelName)
+    {
+        yield return new WaitForSeconds(2.0f);
+        Application.LoadLevel(levelName);
+    }    
 }
