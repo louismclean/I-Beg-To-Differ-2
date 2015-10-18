@@ -113,7 +113,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   houseFront: {fileID: 21229428}
   houseBack: {fileID: 21271690}
-  fadeRate: 3
   MenuGUIStyle:
     m_Name: 
     m_Normal:
@@ -193,6 +192,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a4ae4d5ab82a14a42b3cc95384570b97, type: 3}
   frameLevel: 0
   materialLevel: 0
+  cost: {fileID: 2800000, guid: c74a20c7c6d97a54f98ca7aeda5d36e8, type: 3}
+  FrameBlanketCost: 050000001900000096000000f4010000
+  FrameCoinCost: 00000000000000001900000032000000
+  FrameWoodCost: 050000001900000096000000f4010000
+  MaterialBlanketCost: 050000000f0000000a0000001e0000000f0000002d000000140000003c000000
+  MaterialCoinCost: 140000003c0000001e0000005a00000028000000780000003200000096000000
+  MaterialWoodCost: 0000000000000000000000000000000000000000000000000000000000000000
 --- !u!212 &21229428
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -253,12 +259,148 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: FrameCoinCost.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameWoodCost.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameBlanketCost.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialCoinCost.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialWoodCost.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialBlanketCost.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Size.x
       value: 11.5699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cost
+      value: 
+      objectReference: {fileID: 2800000, guid: c74a20c7c6d97a54f98ca7aeda5d36e8, type: 3}
+    - target: {fileID: 0}
+      propertyPath: FrameBlanketCost.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameBlanketCost.Array.data[1]
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameBlanketCost.Array.data[2]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameBlanketCost.Array.data[3]
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameBlanketCost.Array.data[4]
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameCoinCost.Array.data[2]
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameCoinCost.Array.data[3]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameWoodCost.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameWoodCost.Array.data[1]
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameWoodCost.Array.data[2]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FrameWoodCost.Array.data[3]
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialBlanketCost.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialBlanketCost.Array.data[1]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialBlanketCost.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialBlanketCost.Array.data[3]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialBlanketCost.Array.data[4]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialBlanketCost.Array.data[5]
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialBlanketCost.Array.data[6]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialBlanketCost.Array.data[7]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialCoinCost.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialCoinCost.Array.data[1]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialCoinCost.Array.data[2]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialCoinCost.Array.data[3]
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialCoinCost.Array.data[4]
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialCoinCost.Array.data[5]
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialCoinCost.Array.data[6]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaterialCoinCost.Array.data[7]
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
