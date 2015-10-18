@@ -3,10 +3,12 @@ using System.Collections;
 
 public class TextMeshSortLayerFix : MonoBehaviour {
 
+    public int sortOrder = 1;
+
 	// Use this for initialization
 	void Start () {
-        GetComponent<ParticleSystem>().GetComponent<Renderer>().sortingLayerName = "UI";
-        GetComponent<ParticleSystem>().GetComponent<Renderer>().sortingOrder = 1;
+        GetComponent<TextMesh>().GetComponent<Renderer>().sortingLayerName = "UI";
+        GetComponent<TextMesh>().GetComponent<Renderer>().sortingOrder = sortOrder;
 	}
 	
 	// Update is called once per frame

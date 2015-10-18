@@ -56,8 +56,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -.910000026, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 480532}
   m_RootOrder: 1
@@ -69,7 +69,7 @@ Transform:
   m_GameObject: {fileID: 188252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .0700000003, y: -4.13999987, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 481446}
   - {fileID: 415496}
@@ -82,8 +82,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -.839999974, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 480532}
   m_RootOrder: 0
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: .0700000003}
   serializedVersion: 2
-  m_Size: {x: 1.29999995, y: .74000001}
+  m_Size: {x: 5, y: 3}
 --- !u!114 &11430572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,7 +173,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   houseFrontSprite:
-  - {fileID: 21300000, guid: e1f65c159cd834cf3b88c197947bcd43, type: 3}
+  - {fileID: 21300000, guid: 760ff19879b2d4f54818b30cc581f7bb, type: 3}
   - {fileID: 21300000, guid: bb30295c3182e407db3cd2da17b4d144, type: 3}
   - {fileID: 21300000, guid: 742ff9385557146a4b500c8dd12e5d2a, type: 3}
   - {fileID: 21300000, guid: 5e0a63d307d804f77ab28d60ea0e9bf0, type: 3}
@@ -186,7 +186,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b3ed6bcf8c3e64b94a56364ecf047534, type: 3}
   - {fileID: 21300000, guid: 68b052240357c47869c3ff21b2c97aa0, type: 3}
   houseBackSprite:
-  - {fileID: 21300000, guid: 760ff19879b2d4f54818b30cc581f7bb, type: 3}
+  - {fileID: 21300000, guid: e1f65c159cd834cf3b88c197947bcd43, type: 3}
   - {fileID: 21300000, guid: 8612a77e617a340a5a7ca5769d0b345c, type: 3}
   - {fileID: 21300000, guid: 363e41c3dae514301a6380d0b61ce7c0, type: 3}
   - {fileID: 21300000, guid: a4ae4d5ab82a14a42b3cc95384570b97, type: 3}
@@ -199,6 +199,11 @@ MonoBehaviour:
   MaterialBlanketCost: 050000000f0000000a0000001e0000000f0000002d000000140000003c000000
   MaterialCoinCost: 140000003c0000001e0000005a00000028000000780000003200000096000000
   MaterialWoodCost: 0000000000000000000000000000000000000000000000000000000000000000
+  buymenu1: {fileID: 0}
+  buymenu2: {fileID: 0}
+  cannotBuy1: {fileID: 0}
+  cannotBuy2Frame: {fileID: 0}
+  cannotbuy2Material: {fileID: 0}
 --- !u!212 &21229428
 SpriteRenderer:
   m_ObjectHideFlags: 1

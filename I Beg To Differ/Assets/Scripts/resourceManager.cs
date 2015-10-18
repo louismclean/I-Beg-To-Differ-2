@@ -45,6 +45,15 @@ public class resourceManager : MonoBehaviour {
         Debug.Log("cannot spend " + woodamt + " " + blanketamt + " " + coinamt);
 		return false;
 	}
+
+    public bool CouldSpend(int woodamt, int blanketamt, int coinamt)
+    {
+        if (wood.canSpend(woodamt) && blankets.canSpend(blanketamt) && coins.canSpend(coinamt))
+        {
+            return true;
+        }
+        return false;
+    }
 }
 
 

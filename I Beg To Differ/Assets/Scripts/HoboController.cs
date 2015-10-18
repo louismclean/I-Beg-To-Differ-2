@@ -21,7 +21,7 @@ public class HoboController : MonoBehaviour {
 	private float xLimightRight = 105f;
 	private float ylimit = -3.700002f;
 
-    private bool m_isInHouse;
+    public bool m_isInHouse;
 
     public bool m_isDying = false;
 
