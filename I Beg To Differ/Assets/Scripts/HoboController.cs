@@ -17,7 +17,7 @@ public class HoboController : MonoBehaviour {
 
     private bool m_Jump;
 
-	private float xLimitLeft = -106f;
+	private float xLimitLeft = -108f;
 	private float xLimightRight = 105f;
 	private float ylimit = -3.700002f;
 
