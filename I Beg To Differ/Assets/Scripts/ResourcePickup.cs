@@ -8,6 +8,7 @@ public class ResourcePickup : MonoBehaviour {
 	public string type;
 	public GameObject getText;
 	private GameObject resourceman;
+	int day;
 	private bool goingUp = true;
 	private bool getable = true;
 	private float ctr;// = distance;
@@ -17,10 +18,13 @@ public class ResourcePickup : MonoBehaviour {
 	void Start () {
 		ctr = distance;
 		resourceman = GameObject.FindGameObjectWithTag ("ResourceManager");
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		day = WorldTime.day;
+		value = 5 + day / 5;
 		move ();
 		if (!getable) {
 			ttl-=Time.deltaTime;
