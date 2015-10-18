@@ -67,7 +67,9 @@ public class HoboExposure : MonoBehaviour {
             }
         }
 
-		if (exposure > max_exposure) {
+        if (exposure >= max_exposure && !hControl.m_isDying)
+        {
+            Debug.Log("dying now kk");
             hControl.m_isDying = true;
 			switch(weatherManager.currentWeather)
             //switch scene based on current weather
@@ -90,7 +92,7 @@ public class HoboExposure : MonoBehaviour {
 
     IEnumerator WaitAndLoadLevel(string levelName)
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(4.0f);
         Application.LoadLevel(levelName);
     }    
 }

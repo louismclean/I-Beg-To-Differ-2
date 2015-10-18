@@ -6,7 +6,7 @@ public class WeatherManager : MonoBehaviour {
 
     public enum WeatherType {Sun, Rain, Snow, Volcano};
     public WeatherType currentWeather;
-    public int weatherIntensity;
+    public int weatherIntensity = 1;
     public Queue<WeatherType> WeatherForecast;
     public Sprite SunnySprite;
     public Sprite RainySprite;
@@ -40,9 +40,19 @@ public class WeatherManager : MonoBehaviour {
     public Transform forecastLeftAnchor;
     public Transform forecastRightAnchor;
 
+    private float rainEmissionRateLevel1 = 15f;
+    private float rainEmissionRateLevel2 = 30f;
+    private float rainEmissionRateLevel3 = 45f;
+
+    private float snowEmissionRateLevel1 = 15f;
+    private float snowEmissionRateLevel2 = 30f;
+    private float snowEmissionRateLevel3 = 45f;
+
+
     void Awake()
     {
-        currentWeather = WeatherType.Sun;
+        weatherIntensity = 3;
+        currentWeather = WeatherType.Rain;
         WeatherForecast = new Queue<WeatherType>();
 
         WeatherForecastIcon newIcon;
@@ -89,6 +99,7 @@ public class WeatherManager : MonoBehaviour {
 
 		switch (currentWeather)
 		{
+
 		case WeatherType.Sun:
 			sunnySystem.SetActive(true);
 			if(timer.isDay())
@@ -96,26 +107,63 @@ public class WeatherManager : MonoBehaviour {
 			else
 				targetCol = sunnyCol_night;
 			break;
+
+
 		case WeatherType.Rain:
 			rainParticleSystem.SetActive(true);
+            switch(weatherIntensity)
+            {
+                case 1:
+                    rainParticleSystem.GetComponent<ParticleSystem>().emissionRate = rainEmissionRateLevel1;
+                    break;
+                case 2:
+                    rainParticleSystem.GetComponent<ParticleSystem>().emissionRate = rainEmissionRateLevel2;
+                    break;
+                case 3:
+                    rainParticleSystem.GetComponent<ParticleSystem>().emissionRate = rainEmissionRateLevel3;
+                    break;
+                default:
+                    rainParticleSystem.GetComponent<ParticleSystem>().emissionRate = rainEmissionRateLevel1;
+                    break;
+            }
+             
 			if(timer.isDay())
 				targetCol = rainCol_day;
 			else
 				targetCol = rainCol_night;
 			break;
+
+
 		case WeatherType.Snow:
 			snowParticleSystem.SetActive(true);
+            switch (weatherIntensity)
+            {
+                case 1:
+                    snowParticleSystem.GetComponent<ParticleSystem>().emissionRate = snowEmissionRateLevel1;
+                    break;
+                case 2:
+                    snowParticleSystem.GetComponent<ParticleSystem>().emissionRate = snowEmissionRateLevel2;
+                    break;
+                case 3:
+                    snowParticleSystem.GetComponent<ParticleSystem>().emissionRate = snowEmissionRateLevel3;
+                    break;
+                default:
+                    snowParticleSystem.GetComponent<ParticleSystem>().emissionRate = snowEmissionRateLevel1;
+                    break;
+            }
 			if(timer.isDay())
 				targetCol = snowCol_day;
 			else
 				targetCol = snowCol_night;
 			break;
-            case WeatherType.Volcano:
-                if(timer.isDay())
-                    targetCol = doomCol_day;
-                else
-                    targetCol = doomCol_night;
-                break;
+
+
+        case WeatherType.Volcano:
+            if(timer.isDay())
+                targetCol = doomCol_day;
+            else
+                targetCol = doomCol_night;
+            break;
         }
         //currentWeatherTimeRemaining -= Time.deltaTime;
         // if(currentWeatherTimeRemaining < 0f)
@@ -191,9 +239,6 @@ public class WeatherManager : MonoBehaviour {
                     targetCol = doomCol_night;
                 break;
         }
-
-        weatherIntensity = 1;
-
     }
 
     WeatherType GetNextWeather()
