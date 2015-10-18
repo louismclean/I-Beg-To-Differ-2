@@ -40,19 +40,19 @@ public class WeatherManager : MonoBehaviour {
     public Transform forecastLeftAnchor;
     public Transform forecastRightAnchor;
 
-    private float rainEmissionRateLevel1 = 15f;
-    private float rainEmissionRateLevel2 = 30f;
-    private float rainEmissionRateLevel3 = 45f;
+    private float rainEmissionRateLevel1 = 20f;
+    private float rainEmissionRateLevel2 = 60f;
+    private float rainEmissionRateLevel3 = 150f;
 
-    private float snowEmissionRateLevel1 = 15f;
-    private float snowEmissionRateLevel2 = 30f;
-    private float snowEmissionRateLevel3 = 45f;
+    private float snowEmissionRateLevel1 = 20f;
+    private float snowEmissionRateLevel2 = 60f;
+    private float snowEmissionRateLevel3 = 150f;
 
 
     void Awake()
     {
-        weatherIntensity = 3;
-        currentWeather = WeatherType.Rain;
+        weatherIntensity = 1;
+        currentWeather = WeatherType.Sun;
         WeatherForecast = new Queue<WeatherType>();
 
         WeatherForecastIcon newIcon;
@@ -63,26 +63,26 @@ public class WeatherManager : MonoBehaviour {
         newIcon.lifeTime = WorldTime.dayDuration * 3;
         newIcon.SetSprite(SunnySprite);
 
-        //Second day is nice
-        WeatherForecast.Enqueue(WeatherType.Sun);
-        newIcon = Instantiate(WeatherForecastIconPrefab, transform.position, transform.rotation) as WeatherForecastIcon;
-        newIcon.transform.parent = transform.parent;
-        newIcon.lifeTime = WorldTime.dayDuration * 2;
-        newIcon.SetSprite(SunnySprite);        
-
-        //Third day is rainy
+        //Second day is rainy
         WeatherForecast.Enqueue(WeatherType.Rain);
         newIcon = Instantiate(WeatherForecastIconPrefab, transform.position, transform.rotation) as WeatherForecastIcon;
         newIcon.transform.parent = transform.parent;
-        newIcon.lifeTime = WorldTime.dayDuration * 1;
-        newIcon.SetSprite(RainySprite);
+        newIcon.lifeTime = WorldTime.dayDuration * 2;
+        newIcon.SetSprite(RainySprite);        
 
-        //Fourth day is nice
+        //Third day is nice
         WeatherForecast.Enqueue(WeatherType.Sun);
         newIcon = Instantiate(WeatherForecastIconPrefab, transform.position, transform.rotation) as WeatherForecastIcon;
         newIcon.transform.parent = transform.parent;
-        newIcon.lifeTime = 0;
+        newIcon.lifeTime = WorldTime.dayDuration * 1;
         newIcon.SetSprite(SunnySprite);
+
+        //Fourth day is snowy
+        WeatherForecast.Enqueue(WeatherType.Snow);
+        newIcon = Instantiate(WeatherForecastIconPrefab, transform.position, transform.rotation) as WeatherForecastIcon;
+        newIcon.transform.parent = transform.parent;
+        newIcon.lifeTime = 0;
+        newIcon.SetSprite(SnowySprite);
     }
 
 	void Start () 

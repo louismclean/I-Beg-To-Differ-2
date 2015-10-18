@@ -21,8 +21,6 @@ namespace UnityStandardAssets._2D
         private Vector3 m_CurrentVelocity;
         private Vector3 m_LookAheadPos;
 
-        private float speed = 10f;
-
         // Use this for initialization
         private void Start()
         {

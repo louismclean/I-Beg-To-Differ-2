@@ -57,6 +57,10 @@ public class House : MonoBehaviour {
     public GameObject buymenu1;
     public GameObject buymenu2;
 
+    public GameObject cannotBuy1;
+    public GameObject cannotBuy2Frame;
+    public GameObject cannotbuy2Material;
+
     // Use this for initialization
 	void Start () {
 
@@ -79,6 +83,9 @@ public class House : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        Cost upgradeCost;
+
         if(disableFadeTimer > 0f)
         {
             disableFadeTimer -= Time.deltaTime;
@@ -93,11 +100,21 @@ public class House : MonoBehaviour {
         {
             buymenu1.SetActive(true);
             buymenu2.SetActive(false);
+
+            upgradeCost = getFrameUpgradeCost(frameLevel);
+            
+            cannotBuy1.SetActive(!m_resourceManager.CouldSpend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost));         
         }
         else if(m_isInHouse)
         {
             buymenu1.SetActive(false);
             buymenu2.SetActive(true);
+
+            upgradeCost = getFrameUpgradeCost(frameLevel);
+            cannotBuy2Frame.SetActive(!m_resourceManager.CouldSpend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost));
+
+            upgradeCost = getMaterialUpgradeCost(frameLevel,materialLevel);
+            cannotbuy2Material.SetActive(!m_resourceManager.CouldSpend(upgradeCost.woodCost, upgradeCost.blanketCost, upgradeCost.coinCost));
         }
         else
         {
