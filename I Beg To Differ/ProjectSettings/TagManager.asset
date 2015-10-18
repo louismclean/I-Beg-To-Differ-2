@@ -13,6 +13,7 @@ TagManager:
   - BlanketSpawner
   - CoinSpawner
   - WoodSpawner
+  - Music
   layers:
   - Default
   - TransparentFX
