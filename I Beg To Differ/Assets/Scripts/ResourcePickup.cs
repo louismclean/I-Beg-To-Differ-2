@@ -50,6 +50,7 @@ public class ResourcePickup : MonoBehaviour {
 		if (col.gameObject.tag == "Player"&&getable) {
 			this.gameObject.GetComponent<SpriteRenderer>().enabled=false;
 			this.gameObject.GetComponent<ParticleSystem>().Play();
+			this.gameObject.GetComponent<AudioSource>().Play();
 			GameObject x = (GameObject)Instantiate(getText,this.transform.position-new Vector3(1,0,0),Quaternion.identity);
 			x.GetComponent<TextMesh>().text = value+" "+type;
 			getable=false;

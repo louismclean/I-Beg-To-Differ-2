@@ -7,7 +7,7 @@ public class fireSpawner : MonoBehaviour {
 
 	float range = 12f;
 
-	float spawnTime = 1f;
+	float spawnTime = .5f;
 	float ticker;
 
 	// Use this for initialization
@@ -21,7 +21,7 @@ public class fireSpawner : MonoBehaviour {
 		if (ticker < 0) {
 			ticker = spawnTime;
 
-			Instantiate(fireball,this.transform.position +new Vector3(Random.Range(-range,range),0,0),Quaternion.identity);
+			Instantiate(fireball,this.transform.position +new Vector3(Random.Range(-range,2.5f*range),0,0),Quaternion.identity);
 
 
 		}

@@ -36,6 +36,7 @@ public class WeatherManager : MonoBehaviour {
     public GameObject rainParticleSystem;
     public GameObject snowParticleSystem;
     public GameObject sunnySystem;
+	public GameObject lavaSystem;
 
     public Transform forecastLeftAnchor;
     public Transform forecastRightAnchor;
@@ -176,6 +177,13 @@ public class WeatherManager : MonoBehaviour {
         //{
        //     icon.transform.position = (icon.transform.position - new Vector3(Time.deltaTime * forecastIconScrollRate, 0f, 0f));
        // }
+
+		if (currentWeather == WeatherType.Volcano) {
+			lavaSystem.SetActive (true);
+		} else {
+			lavaSystem.SetActive (false);
+		}
+
 	}
 
     public void ChangeWeather()
