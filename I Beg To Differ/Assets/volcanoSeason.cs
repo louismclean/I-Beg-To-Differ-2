@@ -24,7 +24,7 @@ public class volcanoSeason : MonoBehaviour {
 
 		}
 		if (numFlashes < 0) {
-			Destroy(flashWhite.gameObject);
+            flashWhite.SetActive(false);
 		}
 	}
 }

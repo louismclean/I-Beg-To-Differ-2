@@ -26,7 +26,7 @@ public class WeatherManager : MonoBehaviour {
 	public Color targetCol;
 	bool isNight;
 	WorldTime timer;
-	public float colorRate = 2f;
+	public float colorRate = 1f;
 
 
     public static int ForecastDays = 4;
@@ -41,17 +41,17 @@ public class WeatherManager : MonoBehaviour {
     public Transform forecastLeftAnchor;
     public Transform forecastRightAnchor;
 
-    private float rainEmissionRateLevel1 = 20f;
+    private float rainEmissionRateLevel1 = 30f;
     private float rainEmissionRateLevel2 = 60f;
-    private float rainEmissionRateLevel3 = 150f;
+    private float rainEmissionRateLevel3 = 120f;
+    private float rainEmissionRateLevel4 = 240f;
 
-    private float snowEmissionRateLevel1 = 20f;
-    private float snowEmissionRateLevel2 = 60f;
-    private float snowEmissionRateLevel3 = 150f;
+    private float snowEmissionRateLevel1 = 30f;
+    private float snowEmissionRateLevel2 = 120f;
 
-    private int midGame = 10;
-    private int lateGame = 30;
-    private int endGame = 60;
+    private int midGame = 7;
+    private int lateGame = 15;
+    private int endGame = 30;
 
 
     void Awake()
@@ -128,7 +128,7 @@ public class WeatherManager : MonoBehaviour {
                     rainParticleSystem.GetComponent<ParticleSystem>().emissionRate = rainEmissionRateLevel3;
                     break;
                 default:
-                    rainParticleSystem.GetComponent<ParticleSystem>().emissionRate = rainEmissionRateLevel1;
+                    rainParticleSystem.GetComponent<ParticleSystem>().emissionRate = rainEmissionRateLevel4;
                     break;
             }
              
@@ -148,9 +148,6 @@ public class WeatherManager : MonoBehaviour {
                     break;
                 case 2:
                     snowParticleSystem.GetComponent<ParticleSystem>().emissionRate = snowEmissionRateLevel2;
-                    break;
-                case 3:
-                    snowParticleSystem.GetComponent<ParticleSystem>().emissionRate = snowEmissionRateLevel3;
                     break;
                 default:
                     snowParticleSystem.GetComponent<ParticleSystem>().emissionRate = snowEmissionRateLevel1;
@@ -258,8 +255,8 @@ public class WeatherManager : MonoBehaviour {
     WeatherType GetNextWeather()
     {
 
-        //day 10 volcano
-        if(WorldTime.day == 7)
+        //day 7 volcano
+        if(WorldTime.day == 3)
         {
             return WeatherType.Volcano;
         }
@@ -310,7 +307,7 @@ public class WeatherManager : MonoBehaviour {
             {
                 return WeatherType.Rain;
             }
-            else if (r > 0.30f)
+            else if (r > 0.25f)
             {
                 return WeatherType.Snow;
             }
@@ -329,7 +326,7 @@ public class WeatherManager : MonoBehaviour {
             {
                 return WeatherType.Rain;
             }
-            else if (r > 0.50f)
+            else if (r > 0.40f)
             {
                 return WeatherType.Snow;
             }

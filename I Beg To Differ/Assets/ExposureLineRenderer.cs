@@ -3,13 +3,13 @@ using System.Collections;
 
 public class ExposureLineRenderer : MonoBehaviour {
 
-    public Transform leftAnchor;
-    public Transform rightAnchor;
-
     public LineRenderer bglineRenderer;
     public LineRenderer filllineRenderer;
 
     public HoboExposure hExpose;
+
+    Vector3 leftAnchor = new Vector3(-3f, 0f, 0f);
+    Vector3 rightAnchor = new Vector3(3f, 0f, 0f);
 
 	// Use this for initialization
 	void Start () {
@@ -31,8 +31,22 @@ public class ExposureLineRenderer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Vector3 pos = Vector3.Lerp(leftAnchor, rightAnchor, hExpose.exposure);
+
+        bglineRenderer.SetPosition(0, pos);
+        bglineRenderer.SetPosition(1, rightAnchor);
+
+        filllineRenderer.SetPosition(0, leftAnchor);
+        filllineRenderer.SetPosition(1, pos);
+
+        filllineRenderer.SetColors(Color.green, Color.blue);
+	}
+
+    void fixedUpdate()
+    {
+        /*
         Vector3 pos = Vector3.Lerp(leftAnchor.position, rightAnchor.position, hExpose.exposure);
-        
+
         bglineRenderer.SetPosition(0, pos);
         bglineRenderer.SetPosition(1, rightAnchor.position);
 
@@ -40,5 +54,6 @@ public class ExposureLineRenderer : MonoBehaviour {
         filllineRenderer.SetPosition(1, pos);
 
         filllineRenderer.SetColors(Color.green, Color.blue);
-	}
+         */
+    }
 }

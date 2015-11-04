@@ -61,10 +61,16 @@ public class House : MonoBehaviour {
     public GameObject cannotBuy2Frame;
     public GameObject cannotbuy2Material;
 
+
+
+    private WeatherManager weatherManager;
+
     // Use this for initialization
 	void Start () {
 
         m_resourceManager = GameObject.FindGameObjectWithTag("ResourceManager").GetComponent<resourceManager>();
+        weatherManager = GameObject.Find("WeatherManager").GetComponent<WeatherManager>();
+
         for(int i=0; i<MAXFRAMELEVEL; i++)
         {
             Debug.Log("At frame level " + i + " a frame upgrade costs " + getFrameUpgradeCost(i).toString());
@@ -123,6 +129,11 @@ public class House : MonoBehaviour {
             buymenu1.SetActive(false);
             buymenu2.SetActive(false);
         }
+
+
+
+
+
 	}
 
     void OnGUI()
@@ -232,6 +243,7 @@ public class House : MonoBehaviour {
 
     public Cost getFrameUpgradeCost(int frameLevel)
     {
+        Debug.Log("Getting frame upgrade cost " + frameLevel);
         int woodCost = FrameWoodCost[frameLevel];
         int blanketCost = FrameBlanketCost[frameLevel];
         int coinCost = FrameCoinCost[frameLevel];

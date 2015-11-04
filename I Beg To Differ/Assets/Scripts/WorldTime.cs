@@ -10,6 +10,7 @@ public class WorldTime : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        day = 1;
         weatherManager = GameObject.Find("WeatherManager").GetComponent<WeatherManager>();
 	}
 	

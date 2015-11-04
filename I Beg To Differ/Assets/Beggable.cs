@@ -12,9 +12,12 @@ public class Beggable : MonoBehaviour {
 
     public ResourcePickup coinPrefab;
 
+    private GameObject begSign;
+
 	// Use this for initialization
 	void Start () {
-        hobo = GameObject.Find("hobo_player");	
+        hobo = GameObject.Find("hobo_player");
+        begSign = GameObject.Find("Beg");
 	}
 	
 	// Update is called once per frame
@@ -31,6 +34,14 @@ public class Beggable : MonoBehaviour {
             Beg();
         }
 	}
+
+    void LateUpdate()
+    {
+        if(CanBeg())
+        {
+            begSign.SetActive(true);
+        }
+    }
 
     void Beg()
     {

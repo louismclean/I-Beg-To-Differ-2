@@ -71,11 +71,13 @@ public class SpawnerManager : MonoBehaviour {
             }
         }
         
-        if (count > max)
+        if (count >= max)
         {
+            Debug.Log(count + " " + a_resourcetype + " found; not spawning another");
             return false;
         }
 
+        Debug.Log(count + " " + a_resourcetype + " found; spawning one more");
         return true;
     }
 }

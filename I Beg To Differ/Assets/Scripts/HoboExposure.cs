@@ -14,9 +14,8 @@ public class HoboExposure : MonoBehaviour {
 
     public float homeRestoreRate = 0.025f;
 
-    public float SunnyExposureRestoreRate = 0.01f;
     public float RainyExposureRate = 0.02f;
-    public float SnowyExposureRate = 0.04f;
+    public float SnowyExposureRate = 0.03f;
 
     public Transform guiAnchor;
     public House myHouse;
@@ -24,6 +23,10 @@ public class HoboExposure : MonoBehaviour {
     private bool _isExposed;
 
     private HoboController hControl;
+   
+    public GameObject inadequateFrame;
+    public GameObject insufficientInsulation;
+
 
     void OnGUI()
     {
@@ -50,6 +53,9 @@ public class HoboExposure : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        inadequateFrame.SetActive(false);
+        insufficientInsulation.SetActive(false);
+
         _isExposed = !hControl.m_isInHouse;
 
         //If not protected, take some exposure
@@ -58,11 +64,26 @@ public class HoboExposure : MonoBehaviour {
             switch(weatherManager.currentWeather)
             {
                 case WeatherManager.WeatherType.Rain:
-                    exposure = Mathf.Min(exposure + Time.deltaTime * RainyExposureRate * weatherManager.weatherIntensity, 1f);
+                    exposure = Mathf.Min(exposure + Time.deltaTime * (RainyExposureRate + RainyExposureRate * (weatherManager.weatherIntensity-1) * 0.75f), 1f);
+                    if (hControl.m_isInHouse)
+                    {
+                        inadequateFrame.SetActive(true);
+                    }
                     break;
                 case WeatherManager.WeatherType.Snow:
-                    exposure = Mathf.Min(exposure + Time.deltaTime * SnowyExposureRate * weatherManager.weatherIntensity, 1f);
+                    exposure = Mathf.Min(exposure + Time.deltaTime * (SnowyExposureRate + SnowyExposureRate * (weatherManager.weatherIntensity-1) * 0.75f), 1f);
+                    if (hControl.m_isInHouse)
+                    {
+                        insufficientInsulation.SetActive(true);
+                    }
                     break;
+                case WeatherManager.WeatherType.Volcano:
+                    if (hControl.m_isInHouse)
+                    {
+                        insufficientInsulation.SetActive(true);
+                    }
+                    break;
+
             }
         }
 
@@ -111,7 +132,7 @@ public class HoboExposure : MonoBehaviour {
             case WeatherManager.WeatherType.Rain:
                 return myHouse.frameLevel >= weatherManager.weatherIntensity;
             case WeatherManager.WeatherType.Snow:
-                return myHouse.materialLevel >= weatherManager.weatherIntensity;
+                return myHouse.materialLevel > weatherManager.weatherIntensity;
             case WeatherManager.WeatherType.Volcano:
                 return myHouse.materialLevel >= 3;
         }

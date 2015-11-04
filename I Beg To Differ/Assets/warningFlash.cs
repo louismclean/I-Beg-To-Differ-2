@@ -21,14 +21,19 @@ public class warningFlash : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (hb.exposure > threshold) {
+		if (hb.exposure > threshold)
+        {
 			pulseTimer-= Time.deltaTime;
-			if(pulseTimer <0){
+			if(pulseTimer <0)
+            {
 				pulse = !pulse;
 				pulseTimer = pulseDur;
 			}
-
 		}
+        else
+        {
+            pulse = false;
+        }
 		if (pulse) {
 			sr.color = Color.Lerp(sr.color,c,colorspeed);
 		}
